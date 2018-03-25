@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>liuliaixue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工具和命令 ubuntu OS cron, crontab   一个简单的定时任务1 开启日志记录1234sudo vim /etc/rsyslog.d/50-default.conf# remove the &amp;apos;#&amp;apos; before cron.*# save 50-default.confsudo  service rsyslog  restart 2 日志文件测试1cronta">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="liuliaixue">
+<meta property="og:url" content="http://liuliaixue.top/2018/03/25/linux/如何在linux上设置定时任务/index.html">
+<meta property="og:site_name" content="liuliaixue">
+<meta property="og:description" content="工具和命令 ubuntu OS cron, crontab   一个简单的定时任务1 开启日志记录1234sudo vim /etc/rsyslog.d/50-default.conf# remove the &amp;apos;#&amp;apos; before cron.*# save 50-default.confsudo  service rsyslog  restart 2 日志文件测试1cronta">
+<meta property="og:updated_time" content="2017-12-06T13:32:51.464Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="liuliaixue">
+<meta name="twitter:description" content="工具和命令 ubuntu OS cron, crontab   一个简单的定时任务1 开启日志记录1234sudo vim /etc/rsyslog.d/50-default.conf# remove the &amp;apos;#&amp;apos; before cron.*# save 50-default.confsudo  service rsyslog  restart 2 日志文件测试1cronta">
+  
+    <link rel="alternate" href="/atom.xml" title="liuliaixue" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">liuliaixue</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">当白云悠然褪去我已等不及登上高山仰望西方的天空但最美的不是夕阳是夜色如水月色流离</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuliaixue.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux/如何在linux上设置定时任务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/25/linux/如何在linux上设置定时任务/" class="article-date">
+  <time datetime="2018-03-25T02:42:12.919Z" itemprop="datePublished">2018-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="工具和命令"><a href="#工具和命令" class="headerlink" title="工具和命令"></a>工具和命令</h2><ul>
+<li>ubuntu OS</li>
+<li>cron, crontab </li>
+</ul>
+<h2 id="一个简单的定时任务"><a href="#一个简单的定时任务" class="headerlink" title="一个简单的定时任务"></a>一个简单的定时任务</h2><p>1 开启日志记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/rsyslog.d/50-default.conf</span><br><span class="line"># remove the &apos;#&apos; before cron.*</span><br><span class="line"># save 50-default.conf</span><br><span class="line">sudo  service rsyslog  restart</span><br></pre></td></tr></table></figure></p>
+<p>2 日志文件测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># this task will be done once per minute</span><br><span class="line">* * * * * echo &quot;@@@@@@@ test for crontab&quot; &gt;&gt; /tmp/test.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>3 查看日志文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># we openned the cron log</span><br><span class="line">cat /var/log/cron.log</span><br><span class="line"># we log the echo to this file</span><br><span class="line">cat /tmp/test.txt</span><br></pre></td></tr></table></figure></p>
+<p>4 删除这条定时任务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"># delete the command line</span><br></pre></td></tr></table></figure></p>
+<h2 id="一个复杂的定时任务-auto-renew-https-certs"><a href="#一个复杂的定时任务-auto-renew-https-certs" class="headerlink" title="一个复杂的定时任务 auto renew https certs"></a>一个复杂的定时任务 auto renew https certs</h2><p>1 开启日志记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/rsyslog.d/50-default.conf</span><br><span class="line"># remove the &apos;#&apos; before cron.*</span><br><span class="line"># save 50-default.conf</span><br><span class="line">sudo  service rsyslog  restart</span><br></pre></td></tr></table></figure></p>
+<p>2 准备shell 脚本</p>
+<p>尽量使用<strong>绝对路径</strong>, 不知道命令的路径可以使用which 查看, 比如： which node, which pm2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#/home/ubuntu/shell/renew.sh</span><br><span class="line">echo &quot;===================== stop https server ...&quot;</span><br><span class="line">/home/ubuntu/.nvm/versions/node/v8.9.1/bin/pm2 delete all</span><br><span class="line">echo &quot;@@@@@@@ stop nginx ...&quot;</span><br><span class="line">sudo service nginx stop</span><br><span class="line">echo &quot;renew ...&quot;</span><br><span class="line"></span><br><span class="line"># Be careful with this line, you can only generate 7 certs per week using letsencript</span><br><span class="line"># You can comment this line or remove &apos;--force-renewal&apos; when you test</span><br><span class="line">sudo certbot renew --force-renewal</span><br><span class="line">echo &quot;@@@@@@@ restart nginx ...&quot;</span><br><span class="line">sudo service nginx restart</span><br><span class="line">echo &quot;@@@@@@@ start https server ...&quot;</span><br><span class="line">NODE_ENV=cnProduction /home/ubuntu/.nvm/versions/node/v8.9.1/bin/pm2 start /home/ubuntu/MODELO_backend/server.js</span><br><span class="line">echo &quot;===================== renew finished&quot;</span><br></pre></td></tr></table></figure></p>
+<p>3 添加定时任务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># this task will be done at 1st 01:01 in month 2,4,6,8,10,12</span><br><span class="line">1 1 1 2,4,6,8,10,12 * /bin/sh /home/ubuntu/shell/renew.sh &gt;&gt; /tmp/test.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>4 查看日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/cron.log</span><br><span class="line">cat /tmp/test.txt</span><br></pre></td></tr></table></figure></p>
+<h2 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h2><h3 id="usr-bin-env-node-No-such-file-or-directory"><a href="#usr-bin-env-node-No-such-file-or-directory" class="headerlink" title="/usr/bin/env:node No such file or directory"></a>/usr/bin/env:node No such file or directory</h3><p>非常大可能是 环境变量不对<br>我遇到的是使用pm2 时node路径不对，找不到node<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/bin/nodejs /usr/bin/node</span><br><span class="line"># ln -s _your_node_path /usr/bin/node</span><br><span class="line"># ln -s /usr/local/bin/nodejs /usr/bin/node</span><br></pre></td></tr></table></figure></p>
+<p>ref <a href="https://github.com/nodejs/node-v0.x-archive/issues/3911" target="_blank" rel="noopener">https://github.com/nodejs/node-v0.x-archive/issues/3911</a></p>
+<h3 id="No-MTA-installed-discarding-output"><a href="#No-MTA-installed-discarding-output" class="headerlink" title="No MTA installed, discarding output"></a>No MTA installed, discarding output</h3><p>没有邮件服务器，放弃日志<br>通常在每个命令末尾加上<code>&gt;&gt; /tmp/test.txt 2&gt;&amp;1</code>将日志输出到文件</p>
+<h3 id="XXXXXXX-not-found"><a href="#XXXXXXX-not-found" class="headerlink" title="XXXXXXX not found"></a>XXXXXXX not found</h3><p>such as <code>pm2: not found</code><br>something like <strong>No such file or directory</strong><br>we can use the absolute path</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># wrong</span><br><span class="line">pm2 start </span><br><span class="line"></span><br><span class="line"># right</span><br><span class="line">/home/ubuntu/.nvm/versions/node/v8.9.1/bin/pm2 start</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuliaixue.top/2018/03/25/linux/如何在linux上设置定时任务/" data-id="cjf67doyu000e1r4r5j0jvy84" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/25/mongo/how-to-install-robo3t-in-ubuntu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/25/linux/linux/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-debugger-inspect/">node debugger inspect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-http-server/">nodejs http server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-node/">nodejs node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-node-require/">nodejs node require</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pingpp-pingpp-支付/">pingpp pingpp 支付</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell-environment-variables-env/">powershell environment variables env</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/node-debugger-inspect/" style="font-size: 10px;">node debugger inspect</a> <a href="/tags/nodejs-http-server/" style="font-size: 10px;">nodejs http server</a> <a href="/tags/nodejs-node/" style="font-size: 10px;">nodejs node</a> <a href="/tags/nodejs-node-require/" style="font-size: 10px;">nodejs node require</a> <a href="/tags/pingpp-pingpp-支付/" style="font-size: 10px;">pingpp pingpp 支付</a> <a href="/tags/powershell-environment-variables-env/" style="font-size: 10px;">powershell environment variables env</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/25/docker/postgres/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-install-memcached/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-build-nodejs-app/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/mysql/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-install-mongo/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Alan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

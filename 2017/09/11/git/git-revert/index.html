@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>liuliaixue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="# 比如当我们Git revert的时候， git revert  Git会抱怨： is a merge but no -m option was given 这是因为你revert的那个commit是一个merge commit，它有两个parent, Git不知道base是选哪个parent，就没法diff，所以就抱怨了，所以你要显示告诉Git用哪一个parent。 git revert si">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="liuliaixue">
+<meta property="og:url" content="http://liuliaixue.top/2017/09/11/git/git-revert/index.html">
+<meta property="og:site_name" content="liuliaixue">
+<meta property="og:description" content="# 比如当我们Git revert的时候， git revert  Git会抱怨： is a merge but no -m option was given 这是因为你revert的那个commit是一个merge commit，它有两个parent, Git不知道base是选哪个parent，就没法diff，所以就抱怨了，所以你要显示告诉Git用哪一个parent。 git revert si">
+<meta property="og:updated_time" content="2017-12-01T04:50:11.762Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="liuliaixue">
+<meta name="twitter:description" content="# 比如当我们Git revert的时候， git revert  Git会抱怨： is a merge but no -m option was given 这是因为你revert的那个commit是一个merge commit，它有两个parent, Git不知道base是选哪个parent，就没法diff，所以就抱怨了，所以你要显示告诉Git用哪一个parent。 git revert si">
+  
+    <link rel="alternate" href="/atom.xml" title="liuliaixue" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">liuliaixue</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">当白云悠然褪去我已等不及登上高山仰望西方的天空但最美的不是夕阳是夜色如水月色流离</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuliaixue.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git/git-revert" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/11/git/git-revert/" class="article-date">
+  <time datetime="2017-09-11T09:21:51.000Z" itemprop="datePublished">2017-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#</p>
+<p>比如当我们Git revert的时候，</p>
+<p>git revert </p>
+<p>Git会抱怨：</p>
+<p>is a merge but no -m option was given</p>
+<p>这是因为你revert的那个commit是一个merge commit，它有两个parent, Git不知道base是选哪个parent，就没法diff，所以就抱怨了，所以你要显示告诉Git用哪一个parent。</p>
+<p>git revert sidsad8 -m 1</p>
+<p>这样就选parent 1，那么parent 1又是哪一个呢？</p>
+<p>一般来说，如果你在master上mergezhc_branch,那么parent 1就是master，parent 2就是zhc_branch.</p>
+<p>Often this will be parent number one, for example if you were on master and did git merge unwanted and then decided to revert the merge of unwanted. The first parent would be your pre-merge master branch and the second parent would be the tip of unwanted.</p>
+<p>上一篇：三分钟教你学Git(十九) - 全局，用户，仓库作用域的配置文件</p>
+<p>原文:<a href="http://blog.csdn.net/hongchangfirst/article/details/49472913" target="_blank" rel="noopener">http://blog.csdn.net/hongchangfirst/article/details/49472913</a></p>
+<p>作者:hongchangfirst</p>
+<p>hongchangfirst的主页:<a href="http://blog.csdn.net/hongchangfirst" target="_blank" rel="noopener">http://blog.csdn.net/hongchangfirst</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuliaixue.top/2017/09/11/git/git-revert/" data-id="cjf67dm5h0006ze4rjqpvsbht" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/11/nodejs/server/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          nodejs服务器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/11/knows/pingpp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">ping++</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-debugger-inspect/">node debugger inspect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-http-server/">nodejs http server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-node/">nodejs node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-node-require/">nodejs node require</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pingpp-pingpp-支付/">pingpp pingpp 支付</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell-environment-variables-env/">powershell environment variables env</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/node-debugger-inspect/" style="font-size: 10px;">node debugger inspect</a> <a href="/tags/nodejs-http-server/" style="font-size: 10px;">nodejs http server</a> <a href="/tags/nodejs-node/" style="font-size: 10px;">nodejs node</a> <a href="/tags/nodejs-node-require/" style="font-size: 10px;">nodejs node require</a> <a href="/tags/pingpp-pingpp-支付/" style="font-size: 10px;">pingpp pingpp 支付</a> <a href="/tags/powershell-environment-variables-env/" style="font-size: 10px;">powershell environment variables env</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/25/docker/postgres/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-install-memcached/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-build-nodejs-app/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/mysql/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-install-mongo/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Alan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

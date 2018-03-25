@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>liuliaixue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="liuliaixue">
+<meta property="og:url" content="http://liuliaixue.top/2018/03/25/jQuery/selector/index.html">
+<meta property="og:site_name" content="liuliaixue">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:updated_time" content="2017-12-01T04:50:11.762Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="liuliaixue">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+  
+    <link rel="alternate" href="/atom.xml" title="liuliaixue" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">liuliaixue</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">当白云悠然褪去我已等不及登上高山仰望西方的天空但最美的不是夕阳是夜色如水月色流离</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuliaixue.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jQuery/selector" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/25/jQuery/selector/" class="article-date">
+  <time datetime="2018-03-25T02:42:12.911Z" itemprop="datePublished">2018-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">jQuery 的选择器可谓之强大无比，这里简单地总结一下常用的元素查找方法 </span><br><span class="line"> </span><br><span class="line">$(&quot;#myELement&quot;)    选择id值等于myElement的元素，id值不能重复在文档中只能有一个id值是myElement所以得到的是唯一的元素 </span><br><span class="line">$(&quot;div&quot;)           选择所有的div标签元素，返回div元素数组 </span><br><span class="line">$(&quot;.myClass&quot;)      选择使用myClass类的css的所有元素 </span><br><span class="line">$(&quot;*&quot;)             选择文档中的所有的元素，可以运用多种的选择方式进行联合选择：例如$(&quot;#myELement,div,.myclass&quot;) </span><br><span class="line"> </span><br><span class="line">层叠选择器： </span><br><span class="line">$(&quot;form input&quot;)         选择所有的form元素中的input元素 </span><br><span class="line">$(&quot;#main &gt; *&quot;)          选择id值为main的所有的子元素 </span><br><span class="line">$(&quot;label + input&quot;)     选择所有的label元素的下一个input元素节点，经测试选择器返回的是label标签后面直接跟一个input标签的所有input标签元素 </span><br><span class="line">$(&quot;#prev ~ div&quot;)       同胞选择器，该选择器返回的为id为prev的标签元素的所有的属于同一个父元素的div标签 </span><br><span class="line"> </span><br><span class="line">基本过滤选择器： </span><br><span class="line">$(&quot;tr:first&quot;)               选择所有tr元素的第一个 </span><br><span class="line">$(&quot;tr:last&quot;)                选择所有tr元素的最后一个 </span><br><span class="line">$(&quot;input:not(:checked) + span&quot;)   </span><br><span class="line"> </span><br><span class="line">过滤掉：checked的选择器的所有的input元素 </span><br><span class="line"> </span><br><span class="line">$(&quot;tr:even&quot;)               选择所有的tr元素的第0，2，4... ...个元素（注意：因为所选择的多个元素时为数组，所以序号是从0开始） </span><br><span class="line"> </span><br><span class="line">$(&quot;tr:odd&quot;)                选择所有的tr元素的第1，3，5... ...个元素 </span><br><span class="line">$(&quot;td:eq(2)&quot;)             选择所有的td元素中序号为2的那个td元素 </span><br><span class="line">$(&quot;td:gt(4)&quot;)             选择td元素中序号大于4的所有td元素 </span><br><span class="line">$(&quot;td:ll(4)&quot;)              选择td元素中序号小于4的所有的td元素 </span><br><span class="line">$(&quot;:header&quot;) </span><br><span class="line">$(&quot;div:animated&quot;) </span><br><span class="line">内容过滤选择器： </span><br><span class="line"> </span><br><span class="line">$(&quot;div:contains(&apos;John&apos;)&quot;) 选择所有div中含有John文本的元素 </span><br><span class="line">$(&quot;td:empty&quot;)           选择所有的为空（也不包括文本节点）的td元素的数组 </span><br><span class="line">$(&quot;div:has(p)&quot;)        选择所有含有p标签的div元素 </span><br><span class="line">$(&quot;td:parent&quot;)          选择所有的以td为父节点的元素数组 </span><br><span class="line">可视化过滤选择器： </span><br><span class="line"> </span><br><span class="line">$(&quot;div:hidden&quot;)        选择所有的被hidden的div元素 </span><br><span class="line">$(&quot;div:visible&quot;)        选择所有的可视化的div元素 </span><br><span class="line">属性过滤选择器： </span><br><span class="line"> </span><br><span class="line">$(&quot;div[id]&quot;)              选择所有含有id属性的div元素 </span><br><span class="line">$(&quot;input[name=&apos;newsletter&apos;]&quot;)    选择所有的name属性等于&apos;newsletter&apos;的input元素 </span><br><span class="line"> </span><br><span class="line">$(&quot;input[name!=&apos;newsletter&apos;]&quot;) 选择所有的name属性不等于&apos;newsletter&apos;的input元素 </span><br><span class="line"> </span><br><span class="line">$(&quot;input[name^=&apos;news&apos;]&quot;)         选择所有的name属性以&apos;news&apos;开头的input元素 </span><br><span class="line">$(&quot;input[name$=&apos;news&apos;]&quot;)         选择所有的name属性以&apos;news&apos;结尾的input元素 </span><br><span class="line">$(&quot;input[name*=&apos;man&apos;]&quot;)          选择所有的name属性包含&apos;news&apos;的input元素 </span><br><span class="line"> </span><br><span class="line">$(&quot;input[id][name$=&apos;man&apos;]&quot;)    可以使用多个属性进行联合选择，该选择器是得到所有的含有id属性并且那么属性以man结尾的元素 </span><br><span class="line"> </span><br><span class="line">子元素过滤选择器： </span><br><span class="line"> </span><br><span class="line">$(&quot;ul li:nth-child(2)&quot;),$(&quot;ul li:nth-child(odd)&quot;),$(&quot;ul li:nth-child(3n + 1)&quot;) </span><br><span class="line"> </span><br><span class="line">$(&quot;div span:first-child&quot;)          返回所有的div元素的第一个子节点的数组 </span><br><span class="line">$(&quot;div span:last-child&quot;)           返回所有的div元素的最后一个节点的数组 </span><br><span class="line">$(&quot;div button:only-child&quot;)       返回所有的div中只有唯一一个子节点的所有子节点的数组 </span><br><span class="line"> </span><br><span class="line">表单元素选择器： </span><br><span class="line"> </span><br><span class="line">$(&quot;:input&quot;)                  选择所有的表单输入元素，包括input, textarea, select 和 button </span><br><span class="line"> </span><br><span class="line">$(&quot;:text&quot;)                     选择所有的text input元素 </span><br><span class="line">$(&quot;:password&quot;)           选择所有的password input元素 </span><br><span class="line">$(&quot;:radio&quot;)                   选择所有的radio input元素 </span><br><span class="line">$(&quot;:checkbox&quot;)            选择所有的checkbox input元素 </span><br><span class="line">$(&quot;:submit&quot;)               选择所有的submit input元素 </span><br><span class="line">$(&quot;:image&quot;)                 选择所有的image input元素 </span><br><span class="line">$(&quot;:reset&quot;)                   选择所有的reset input元素 </span><br><span class="line">$(&quot;:button&quot;)                选择所有的button input元素 </span><br><span class="line">$(&quot;:file&quot;)                     选择所有的file input元素 </span><br><span class="line">$(&quot;:hidden&quot;)               选择所有类型为hidden的input元素或表单的隐藏域 </span><br><span class="line"> </span><br><span class="line">表单元素过滤选择器： </span><br><span class="line"> </span><br><span class="line">$(&quot;:enabled&quot;)             选择所有的可操作的表单元素 </span><br><span class="line">$(&quot;:disabled&quot;)            选择所有的不可操作的表单元素 </span><br><span class="line">$(&quot;:checked&quot;)            选择所有的被checked的表单元素 </span><br><span class="line">$(&quot;select option:selected&quot;) 选择所有的select 的子元素中被selected的元素 </span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line"> </span><br><span class="line">选取一个 name 为”S_03_22″的input text框的上一个td的text值</span><br><span class="line">$(”input[@ name =S_03_22]“).parent().prev().text() </span><br><span class="line"> </span><br><span class="line">名字以”S_”开始，并且不是以”_R”结尾的</span><br><span class="line">$(”input[@ name ^=&apos;S_&apos;]“).not(”[@ name $=&apos;_R&apos;]“) </span><br><span class="line"> </span><br><span class="line">一个名为 radio_01的radio所选的值</span><br><span class="line">$(”input[@ name =radio_01][@checked]“).val(); </span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line"> </span><br><span class="line">$(&quot;A B&quot;) 查找A元素下面的所有子节点，包括非直接子节点</span><br><span class="line">$(&quot;A&gt;B&quot;) 查找A元素下面的直接子节点</span><br><span class="line">$(&quot;A+B&quot;) 查找A元素后面的兄弟节点，包括非直接子节点</span><br><span class="line">$(&quot;A~B&quot;) 查找A元素后面的兄弟节点，不包括非直接子节点 </span><br><span class="line"> </span><br><span class="line">1. $(&quot;A B&quot;) 查找A元素下面的所有子节点，包括非直接子节点 </span><br><span class="line"> </span><br><span class="line">例子：找到表单中所有的 input 元素 </span><br><span class="line"> </span><br><span class="line">HTML 代码: </span><br><span class="line"> </span><br><span class="line">&lt;form&gt;</span><br><span class="line">&lt;label&gt;Name:&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;name&quot; /&gt;</span><br><span class="line">&lt;fieldset&gt;</span><br><span class="line">      &lt;label&gt;Newsletter:&lt;/label&gt;</span><br><span class="line">      &lt;input name=&quot;newsletter&quot; /&gt;</span><br><span class="line">&lt;/fieldset&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input name=&quot;none&quot; /&gt; </span><br><span class="line">jQuery 代码: </span><br><span class="line"> </span><br><span class="line">$(&quot;form input&quot;) </span><br><span class="line">结果: </span><br><span class="line"> </span><br><span class="line">[ &lt;input name=&quot;name&quot; /&gt;, &lt;input name=&quot;newsletter&quot; /&gt; ] </span><br><span class="line"> </span><br><span class="line">2. $(&quot;A&gt;B&quot;) 查找A元素下面的直接子节点 </span><br><span class="line">例子：匹配表单中所有的子级input元素。 </span><br><span class="line"> </span><br><span class="line">HTML 代码: </span><br><span class="line"> </span><br><span class="line">&lt;form&gt;</span><br><span class="line">&lt;label&gt;Name:&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;name&quot; /&gt;</span><br><span class="line">&lt;fieldset&gt;</span><br><span class="line">      &lt;label&gt;Newsletter:&lt;/label&gt;</span><br><span class="line">      &lt;input name=&quot;newsletter&quot; /&gt;</span><br><span class="line">&lt;/fieldset&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input name=&quot;none&quot; /&gt; </span><br><span class="line">jQuery 代码: </span><br><span class="line"> </span><br><span class="line">$(&quot;form &gt; input&quot;) </span><br><span class="line">结果: </span><br><span class="line"> </span><br><span class="line">[ &lt;input name=&quot;name&quot; /&gt; ] </span><br><span class="line"> </span><br><span class="line">3. $(&quot;A+B&quot;) 查找A元素后面的兄弟节点，包括非直接子节点 </span><br><span class="line">例子：匹配所有跟在 label 后面的 input 元素 </span><br><span class="line"> </span><br><span class="line">HTML 代码: </span><br><span class="line"> </span><br><span class="line">&lt;form&gt;</span><br><span class="line">&lt;label&gt;Name:&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;name&quot; /&gt;</span><br><span class="line">&lt;fieldset&gt;</span><br><span class="line">      &lt;label&gt;Newsletter:&lt;/label&gt;</span><br><span class="line">      &lt;input name=&quot;newsletter&quot; /&gt;</span><br><span class="line">&lt;/fieldset&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input name=&quot;none&quot; /&gt; </span><br><span class="line">jQuery 代码: </span><br><span class="line"> </span><br><span class="line">$(&quot;label + input&quot;) </span><br><span class="line">结果: </span><br><span class="line"> </span><br><span class="line">[ &lt;input name=&quot;name&quot; /&gt;, &lt;input name=&quot;newsletter&quot; /&gt; ] </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">4. $(&quot;A~B&quot;) 查找A元素后面的兄弟节点，不包括非直接子节点 </span><br><span class="line">例子：找到所有与表单同辈的 input 元素 </span><br><span class="line"> </span><br><span class="line">HTML 代码: </span><br><span class="line"> </span><br><span class="line">&lt;form&gt;</span><br><span class="line">&lt;label&gt;Name:&lt;/label&gt;</span><br><span class="line">&lt;input name=&quot;name&quot; /&gt;</span><br><span class="line">&lt;fieldset&gt;</span><br><span class="line">      &lt;label&gt;Newsletter:&lt;/label&gt;</span><br><span class="line">      &lt;input name=&quot;newsletter&quot; /&gt;</span><br><span class="line">&lt;/fieldset&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input name=&quot;none&quot; /&gt; </span><br><span class="line">jQuery 代码: </span><br><span class="line"> </span><br><span class="line">$(&quot;form ~ input&quot;) </span><br><span class="line">结果: </span><br><span class="line"> </span><br><span class="line">[ &lt;input name=&quot;none&quot; /&gt; ]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuliaixue.top/2018/03/25/jQuery/selector/" data-id="cjf67doyg00051r4reseggmfi" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/25/knows/stripe-alipay/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/25/jQuery/select_1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-debugger-inspect/">node debugger inspect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-http-server/">nodejs http server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-node/">nodejs node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs-node-require/">nodejs node require</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pingpp-pingpp-支付/">pingpp pingpp 支付</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell-environment-variables-env/">powershell environment variables env</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/node-debugger-inspect/" style="font-size: 10px;">node debugger inspect</a> <a href="/tags/nodejs-http-server/" style="font-size: 10px;">nodejs http server</a> <a href="/tags/nodejs-node/" style="font-size: 10px;">nodejs node</a> <a href="/tags/nodejs-node-require/" style="font-size: 10px;">nodejs node require</a> <a href="/tags/pingpp-pingpp-支付/" style="font-size: 10px;">pingpp pingpp 支付</a> <a href="/tags/powershell-environment-variables-env/" style="font-size: 10px;">powershell environment variables env</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/25/docker/postgres/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-install-memcached/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-build-nodejs-app/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/mysql/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/25/docker/how-to-install-mongo/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Alan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

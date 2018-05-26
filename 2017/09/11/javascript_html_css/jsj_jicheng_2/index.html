@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js,继承,class call/apply,prototype," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1 对象冒充1234567891011121314151617181920212223242526272829function Parent(username) &amp;#123;    this.name = username;    this.hello = function () &amp;#123;        alert(this.username);       &amp;#125;&amp;#125;funct">
+<meta name="keywords" content="js,继承,class call&#x2F;apply,prototype">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js继承">
+<meta property="og:url" content="http://liuliaixue.top/2017/09/11/javascript_html_css/jsj_jicheng_2/index.html">
+<meta property="og:site_name" content="liuliaixue">
+<meta property="og:description" content="1 对象冒充1234567891011121314151617181920212223242526272829function Parent(username) &amp;#123;    this.name = username;    this.hello = function () &amp;#123;        alert(this.username);       &amp;#125;&amp;#125;funct">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-26T02:23:48.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js继承">
+<meta name="twitter:description" content="1 对象冒充1234567891011121314151617181920212223242526272829function Parent(username) &amp;#123;    this.name = username;    this.hello = function () &amp;#123;        alert(this.username);       &amp;#125;&amp;#125;funct">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuliaixue.top/2017/09/11/javascript_html_css/jsj_jicheng_2/"/>
+
+
+
+
+
+  <title>js继承 | liuliaixue</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liuliaixue</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">当白云悠然褪去我已等不及登上高山仰望西方的天空但最美的不是夕阳是夜色如水月色流离</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/jsj_jicheng_2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js继承</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-对象冒充"><a href="#1-对象冒充" class="headerlink" title="1 对象冒充"></a>1 对象冒充</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function Parent(username) &#123;</span><br><span class="line">    this.name = username;</span><br><span class="line">    this.hello = function () &#123;</span><br><span class="line">        alert(this.username);   </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">    //通过以下3行实现将Parent的属性和方法追加到Child中，从而实现继承</span><br><span class="line">    //第一步：this.method是作为一个临时的属性，并且指向Parent所指向的对象，</span><br><span class="line">    //第二步：执行this.method方法，即执行Parent所指向的对象函数</span><br><span class="line">    //第三步：销毁this.method属性，即此时Child就已经拥有了Parent的所有属性和方法</span><br><span class="line">    this.method = Parent;</span><br><span class="line">    this.method(username);//最关键的一行</span><br><span class="line">    delete this.method;</span><br><span class="line"></span><br><span class="line">    this.password = password;</span><br><span class="line">    this.world = function () &#123;</span><br><span class="line">        alert(this.password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line"></span><br><span class="line">//Child中没有声明hello()</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure>
+<h2 id="2-继承第二种方式：call-方法方式"><a href="#2-继承第二种方式：call-方法方式" class="headerlink" title="2 继承第二种方式：call()方法方式"></a>2 继承第二种方式：call()方法方式</h2><p>  call方法是Function类中的方法<br>  call方法的第一个参数的值赋值给类(即方法)中出现的this<br>  call方法的第二个参数开始依次赋值给类(即方法)所接受的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function test(str) &#123;</span><br><span class="line">   alert(this.name + &quot; &quot; + str);</span><br><span class="line">&#125;</span><br><span class="line">var object = new Object();</span><br><span class="line">object.name = &quot;zhangsan&quot;;</span><br><span class="line">test.call(object, &quot;langsin&quot;); </span><br><span class="line"></span><br><span class="line">//此时，第一个参数值object传递给了test类(即方法)中出现的this，而第二个参数&quot;langsin&quot;则赋值给了test类(即方法)的str</span><br><span class="line"></span><br><span class="line">function Parent(username) &#123;</span><br><span class="line">   this.username = username;</span><br><span class="line">   this.hello = function() &#123;</span><br><span class="line">       alert(this.username);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">   Parent.call(this, username);</span><br><span class="line"></span><br><span class="line">   this.password = password;</span><br><span class="line">   this.world = function() &#123;</span><br><span class="line">       alert(this.password);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var animals = [</span><br><span class="line">  &#123; species: &apos;Lion&apos;, name: &apos;King&apos; &#125;,</span><br><span class="line">  &#123; species: &apos;Whale&apos;, name: &apos;Fail&apos; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">for (var i = 0; i &lt; animals.length; i++) &#123;</span><br><span class="line">  (function(i) &#123;</span><br><span class="line">    this.print = function() &#123;</span><br><span class="line">      console.log(&apos;#&apos; + i + &apos; &apos; + this.species</span><br><span class="line">                  + &apos;: &apos; + this.name);</span><br><span class="line">    &#125;</span><br><span class="line">    this.print();</span><br><span class="line">  &#125;).call(animals[i], i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="继承的第三种方式：apply-方法方式"><a href="#继承的第三种方式：apply-方法方式" class="headerlink" title="继承的第三种方式：apply()方法方式"></a>继承的第三种方式：apply()方法方式</h2><p>apply方法接受2个参数，<br>    A、第一个参数与call方法的第一个参数一样，即赋值给类(即方法)中出现的this<br>    B、第二个参数为数组类型，这个数组中的每个元素依次赋值给类(即方法)所接受的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function Parent(username) &#123;</span><br><span class="line">  this.username += username;</span><br><span class="line">  this.hello = function() &#123;</span><br><span class="line">      alert(this.username);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">  Parent.apply(this, new Array(username,username,username));</span><br><span class="line"></span><br><span class="line">  this.password = password;</span><br><span class="line">  this.world = function() &#123;</span><br><span class="line">      alert(this.password);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure></p>
+<p>与call()方法类似，第二个参数为数组，可以直接使用arguments</p>
+<h2 id="继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承"><a href="#继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承" class="headerlink" title="继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承"></a>继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">Person.prototype.hello = &quot;hello&quot;;</span><br><span class="line">Person.prototype.sayHello = function() &#123;</span><br><span class="line">    alert(this.hello);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child() &#123;&#125;</span><br><span class="line">Child.prototype = new Person(); //这行的作用是：将Parent中将所有通过prototype追加的属性和方法都追加到Child，从而实现了继承</span><br><span class="line">Child.prototype.world = &quot;world&quot;;</span><br><span class="line">Child.prototype.sayWorld = function() &#123;</span><br><span class="line">    alert(this.world);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c = new Child();</span><br><span class="line">c.sayHello();</span><br><span class="line">c.sayWorld();</span><br></pre></td></tr></table></figure>
+<h2 id="继承的第五种方式：-混合方式混合了call方式、-原型链方式"><a href="#继承的第五种方式：-混合方式混合了call方式、-原型链方式" class="headerlink" title="继承的第五种方式： 混合方式混合了call方式、 原型链方式"></a>继承的第五种方式： 混合方式混合了call方式、 原型链方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Parent(hello) &#123;</span><br><span class="line">    this.hello = hello;</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.sayHello = function() &#123;</span><br><span class="line">    alert(this.hello);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(hello, world) &#123;</span><br><span class="line">    Parent.call(this, hello); //将父类的属性继承过来</span><br><span class="line">    this.world = world; //新增一些属性</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype = new Parent(); //将父类的方法继承过来</span><br><span class="line"></span><br><span class="line">Child.prototype.sayWorld = function() &#123; //新增一些方法</span><br><span class="line">    alert(this.world);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c = new Child(&quot;zhangsan&quot;, &quot;lisi&quot;);</span><br><span class="line">c.sayHello();</span><br><span class="line">c.sayWorld();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+            <a href="/tags/继承/" rel="tag"># 继承</a>
+          
+            <a href="/tags/class-call-apply/" rel="tag"># class call/apply</a>
+          
+            <a href="/tags/prototype/" rel="tag"># prototype</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/01/nodejs/nodejs/" rel="next" title="深入浅出node.js笔记">
+                <i class="fa fa-chevron-left"></i> 深入浅出node.js笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/11/nodejs/server/" rel="prev" title="nodejs服务器">
+                nodejs服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alan" />
+          <p class="site-author-name" itemprop="name">Alan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-对象冒充"><span class="nav-number">1.</span> <span class="nav-text">1 对象冒充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-继承第二种方式：call-方法方式"><span class="nav-number">2.</span> <span class="nav-text">2 继承第二种方式：call()方法方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承的第三种方式：apply-方法方式"><span class="nav-number">3.</span> <span class="nav-text">继承的第三种方式：apply()方法方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承"><span class="nav-number">4.</span> <span class="nav-text">继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承的第五种方式：-混合方式混合了call方式、-原型链方式"><span class="nav-number">5.</span> <span class="nav-text">继承的第五种方式： 混合方式混合了call方式、 原型链方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

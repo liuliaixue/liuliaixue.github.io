@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/26/docker/how-to-build-nodejs-app/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/07/docker/postgres/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/26/docker/how-to-build-nodejs-app/" itemprop="url">how to build image</a></h1>
+                <a class="post-title-link" href="/2018/06/07/docker/postgres/" itemprop="url">docker postgres installation</a></h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T10:28:39+08:00">
-                2018-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T13:22:18+08:00">
+                2018-06-07
               </time>
             
 
@@ -332,10 +332,9 @@
       
         
           
-            <h1 id="files"><a href="#files" class="headerlink" title="files"></a>files</h1><p>hello-world/<br>  ├── Dockerfile<br>  ├── index.js<br>  ├── package.json</p>
-<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">FROM node:8-alpine</span><br><span class="line"></span><br><span class="line"># Create app directory</span><br><span class="line">WORKDIR /home/hello-world</span><br><span class="line"></span><br><span class="line"># Install app dependencies</span><br><span class="line"># A wildcard is used to ensure both package.json AND package-lock.json are copied</span><br><span class="line"># where available (npm@5+)</span><br><span class="line">COPY package*.json ./</span><br><span class="line"></span><br><span class="line">RUN npm install</span><br><span class="line"># If you are building your code for production</span><br><span class="line"># RUN npm install --only=production</span><br><span class="line"></span><br><span class="line"># Bundle app source</span><br><span class="line">COPY . .</span><br><span class="line"></span><br><span class="line">EXPOSE 8080</span><br><span class="line">CMD [ &quot;npm&quot;, &quot;start&quot; ]</span><br></pre></td></tr></table></figure>
-<p>ref:<a href="https://nodejs.org/en/docs/guides/nodejs-docker-webapp/" target="_blank" rel="noopener">https://nodejs.org/en/docs/guides/nodejs-docker-webapp/</a></p>
-<h2 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h2><h2 id="server-js"><a href="#server-js" class="headerlink" title="server.js"></a>server.js</h2><h1 id="build"><a href="#build" class="headerlink" title="build"></a>build</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker build -t liuliaixue/nodejs-hello-world .</span><br></pre></td></tr></table></figure>
+            <h2 id="postgres"><a href="#postgres" class="headerlink" title="postgres"></a>postgres</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull postgres</span><br><span class="line">sudo docker run --name postgres-&#123;ContainerName&#125; -e POSTGRES_PASSWORD=$&#123;PGPassword&#125; -e POSTGRES_USER=&#123;Username&#125; -p 5432:5432 -d postgres</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># login</span><br><span class="line">psql -U &#123;Username&#125; -h 127.0.0.1 -p 5432 </span><br><span class="line"></span><br><span class="line"># db interface</span><br><span class="line">postgres=#</span><br><span class="line"></span><br><span class="line"># change db</span><br><span class="line">postgres=# \c DB_NAME</span><br></pre></td></tr></table></figure>
+<h2 id="useful-command"><a href="#useful-command" class="headerlink" title="useful command"></a>useful command</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --name postgres-tim -e POSTGRES_USER=timqian -p 5432:5432 -d postgres</span><br><span class="line">psql -f ./tools/initDB.sql</span><br><span class="line">select * from model_prop_log;</span><br><span class="line"></span><br><span class="line">psql -U timqian -h 127.0.0.1 -p 5432 [-f initDB]</span><br></pre></td></tr></table></figure>
           
         
       
@@ -383,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/26/docker/postgres/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/05/mongo/mongo-basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -402,7 +401,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/26/docker/postgres/" itemprop="url">docker postgres installation</a></h1>
+                <a class="post-title-link" href="/2018/06/05/mongo/mongo-basic/" itemprop="url">mongo 入门</a></h1>
         
 
         <div class="post-meta">
@@ -414,8 +413,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T10:13:51+08:00">
-                2018-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T17:22:51+08:00">
+                2018-06-05
               </time>
             
 
@@ -454,11 +453,541 @@
       
         
           
-            <h2 id="postgres"><a href="#postgres" class="headerlink" title="postgres"></a>postgres</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull postgres</span><br><span class="line">sudo docker run --name postgres-&#123;ContainerName&#125; -e POSTGRES_PASSWORD=$&#123;PGPassword&#125; -e POSTGRES_USER=&#123;Username&#125; -p 5432:5432 -d postgres</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># login</span><br><span class="line">psql -U &#123;Username&#125; -h 127.0.0.1 -p 5432 </span><br><span class="line"></span><br><span class="line"># db interface</span><br><span class="line">postgres=#</span><br><span class="line"></span><br><span class="line"># change db</span><br><span class="line">postgres=# \c DB_NAME</span><br></pre></td></tr></table></figure>
-<h2 id="useful-command"><a href="#useful-command" class="headerlink" title="useful command"></a>useful command</h2><p>sudo docker run –name postgres-tim -e POSTGRES_USER=timqian -p 5432:5432 -d postgres<br>psql -f ./tools/initDB.sql<br>select * from model_prop_log;</p>
-<p>psql -U timqian -h 127.0.0.1 -p 5432 [-f initDB]</p>
+            <h3 id="简单的增删改查"><a href="#简单的增删改查" class="headerlink" title="简单的增删改查"></a>简单的增删改查</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 数据库列表                  </span><br><span class="line">show dbs;</span><br><span class="line">// 使用一个数据库[testdb]            </span><br><span class="line">use testdb                    </span><br><span class="line">// 当前数据库 </span><br><span class="line">db</span><br><span class="line">// 表[uesr]插入一条数据                    </span><br><span class="line">db.user.insert(&#123;name:&apos;Alan&apos;,age:25&#125;)</span><br><span class="line">// 表[uesr]查找所有数据                   </span><br><span class="line">db.user.find()    </span><br><span class="line">// 表[uesr]查找所有数据并格式化显示               </span><br><span class="line">db.user.find().pretty()</span><br><span class="line">// 表[uesr]更新数据               </span><br><span class="line">db.user.update(&#123;name:&apos;Alan&apos;&#125;,&#123;name:&apos;Alan&apos;,age:26&#125;)</span><br><span class="line">// 删除数据</span><br><span class="line">db.user.remove(&#123;age:25&#125;)</span><br><span class="line">// 当前数据库的表                       </span><br><span class="line">show tables; </span><br><span class="line">show collections</span><br></pre></td></tr></table></figure>
+<h3 id="细说增删改查"><a href="#细说增删改查" class="headerlink" title="细说增删改查"></a>细说增删改查</h3><h4 id="insert-插入"><a href="#insert-插入" class="headerlink" title="insert 插入"></a>insert 插入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db[collect].insert(object);</span><br><span class="line">db.user.insert(&#123;name:&apos;li&apos;,age:27,height:150,weight:60&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="find-查找"><a href="#find-查找" class="headerlink" title="find 查找"></a>find 查找</h4><h5 id="gt-gt-lt-lt"><a href="#gt-gt-lt-lt" class="headerlink" title="&gt;, &gt;=, &lt;, &lt;=, !=, ="></a>&gt;, &gt;=, &lt;, &lt;=, !=, =</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 操作符：&quot;$gt&quot;, &quot;$gte&quot;, &quot;$lt&quot;, &quot;$lte&quot;, &quot;$ne&quot;                 </span><br><span class="line">db.user.find(&#123;name:&apos;liu&apos;,age:&#123;$gt:20&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="And-OR-In-NotIn"><a href="#And-OR-In-NotIn" class="headerlink" title="And OR In NotIn"></a>And OR In NotIn</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 操作符： &quot;&quot;, &quot;$or&quot;, &quot;$in&quot;, &quot;$nin&quot; </span><br><span class="line">db.user.find(&#123;name:&apos;liu&apos;,height:&#123;$in:[150,160]&#125;&#125;) ;</span><br></pre></td></tr></table></figure>
+<h5 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.user.find(&#123;name:/^liu$/&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="复杂查找"><a href="#复杂查找" class="headerlink" title="复杂查找"></a>复杂查找</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 操作符：$where</span><br><span class="line">db.user.find(&#123;</span><br><span class="line">	$where: function() &#123;</span><br><span class="line">		return this.name = &quot;liu&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="update-更新"><a href="#update-更新" class="headerlink" title="update 更新"></a>update 更新</h4><p>整体更新和局部更新，整体更新只保存整个新文档，局部更新一部分数据</p>
+<h5 id="inc-这条数据的增量"><a href="#inc-这条数据的增量" class="headerlink" title="$inc 这条数据的增量"></a>$inc 这条数据的增量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.user.update(&#123;age:27&#125;,&#123;$inc:&#123;age:1&#125;&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="set-这条数据的终值"><a href="#set-这条数据的终值" class="headerlink" title="$set 这条数据的终值"></a>$set 这条数据的终值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.user.update(&#123;age:27&#125;,&#123;$set:&#123;age:28&#125;&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h4><p>删除,同简单操作</p>
+<h2 id="strat-limit"><a href="#strat-limit" class="headerlink" title="strat,limit"></a>strat,limit</h2><p> db.count.find().limit(3).skip(2)</p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/05/nodejs/how-to-resize-image-with-aws-lambda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/nodejs/how-to-resize-image-with-aws-lambda/" itemprop="url">how-to-resize-image-with-aws-lambda</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T17:21:51+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="如何用AWS-lambda改变图片尺寸"><a href="#如何用AWS-lambda改变图片尺寸" class="headerlink" title="如何用AWS lambda改变图片尺寸"></a>如何用AWS lambda改变图片尺寸</h2><p><a href="https://aws.amazon.com/cn/blogs/compute/resize-images-on-the-fly-with-amazon-s3-aws-lambda-and-amazon-api-gateway/" target="_blank" rel="noopener">Resize Images on the Fly with Amazon S3, AWS Lambda, and Amazon API Gateway</a></p>
+<h3 id="创建并配置桶"><a href="#创建并配置桶" class="headerlink" title="创建并配置桶"></a>创建并配置桶</h3><ul>
+<li>创建一个桶 ${your_bucket_name}</li>
+<li><p>配置 权限/存储桶策略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span><br><span class="line">    &quot;Id&quot;: &quot;$&#123;your_policy_Id&#125;&quot;,</span><br><span class="line">    &quot;Statement&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;Sid&quot;: &quot;$&#123;your_policy_statement_sid&#125;&quot;,</span><br><span class="line">            &quot;Effect&quot;: &quot;Allow&quot;,</span><br><span class="line">            &quot;Principal&quot;: &quot;*&quot;,//$&#123;your_statement_principal&#125;,if you don&apos;t konw that,use &apos;*&apos; as default, delete this comments when you use it</span><br><span class="line">            &quot;Action&quot;: [</span><br><span class="line">                &quot;s3:DeleteObject&quot;,</span><br><span class="line">                &quot;s3:GetObject&quot;,</span><br><span class="line">                &quot;s3:PutObject&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;Resource&quot;: &quot;arn:aws:s3:::$&#123;your_bucket_name&#125;/*&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用 属性/静态网站托管, 索引文档填入index.html,将会用到静态网址 ${your_s3_static_hostname}</p>
+</li>
+</ul>
+<h3 id="创建lamdba函数"><a href="#创建lamdba函数" class="headerlink" title="创建lamdba函数"></a>创建lamdba函数</h3><ul>
+<li>如果你想用lambda,应该先开通这个应用</li>
+<li>创建lamdba function,选择空白函数，下一步</li>
+<li>配置触发器，选择 API Gateway,安全性，选择打开，下一步</li>
+<li>名称 resize,运行语言 Node.js 6.10.0,代码输入种类  <img src="https://github.com/awslabs/serverless-image-resizing/raw/master/dist/function.zip" alt="上传.zip"></li>
+<li>环境变量 BUCKET is ${your_bucket_name},URL is ${your_s3_static_hostname}</li>
+<li><p>创建一个普通角色，下面是创建信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;Version&quot;: &quot;2012-10-17&quot;,</span><br><span class="line">  &quot;Statement&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;Effect&quot;: &quot;Allow&quot;,</span><br><span class="line">      &quot;Action&quot;: [</span><br><span class="line">        &quot;logs:CreateLogGroup&quot;,</span><br><span class="line">        &quot;logs:CreateLogStream&quot;,</span><br><span class="line">        &quot;logs:PutLogEvents&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;Resource&quot;: &quot;arn:aws:logs:*:*:*&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;Effect&quot;: &quot;Allow&quot;,</span><br><span class="line">      &quot;Action&quot;: &quot;s3:PutObject&quot;,</span><br><span class="line">      &quot;Resource&quot;: &quot;arn:aws:s3:::$&#123;your_bucket_name&#125;/*&quot;    </span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>内存选择 1536，超时选择 10s,下一步，创建</li>
+</ul>
+<h2 id="设置s3重定向"><a href="#设置s3重定向" class="headerlink" title="设置s3重定向"></a>设置s3重定向</h2><ul>
+<li>lambda.resize/触发器，复制这个触发器的主网址${your_trigger_hostname}<br>//such as your_trigger_host = ‘xxxxxxxxx.execute-api.us-west-2.amazonaws.com’;</li>
+<li>s3/${your_bucket_name}/属性/静态网站托管/重定向规则<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  &lt;RoutingRules&gt;</span><br><span class="line">    &lt;RoutingRule&gt;</span><br><span class="line">        &lt;Condition&gt;</span><br><span class="line">            &lt;KeyPrefixEquals/&gt;</span><br><span class="line">            &lt;HttpErrorCodeReturnedEquals&gt;404&lt;/HttpErrorCodeReturnedEquals&gt;</span><br><span class="line">        &lt;/Condition&gt;</span><br><span class="line">        &lt;Redirect&gt;</span><br><span class="line">            &lt;Protocol&gt;https&lt;/Protocol&gt;</span><br><span class="line">            &lt;HostName&gt;$&#123;your_trigger_hostname&#125;&lt;/HostName&gt;</span><br><span class="line">            &lt;ReplaceKeyPrefixWith&gt;prod/$&#123;your_lambda_resize_name&#125;?key=&lt;/ReplaceKeyPrefixWith&gt;</span><br><span class="line">            &lt;HttpRedirectCode&gt;307&lt;/HttpRedirectCode&gt;</span><br><span class="line">        &lt;/Redirect&gt;</span><br><span class="line">    &lt;/RoutingRule&gt;</span><br><span class="line">&lt;/RoutingRules&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>上传一张图片 test.jpg<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://$&#123;your_s3_static_hostname&#125;/300×300/test.jpg</span><br><span class="line">http://$&#123;your_s3_static_hostname&#125;/25×25/test.jpg</span><br><span class="line">http://$&#123;your_s3_static_hostname&#125;/500×500/test.jpg</span><br></pre></td></tr></table></figure></p>
+<h3 id="完"><a href="#完" class="headerlink" title="完"></a>完</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/05/docker/docker-memcache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/docker/docker-memcache/" itemprop="url">Docker:memcached</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T17:00:07+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>docker pull memcached:1.5</p>
+<p>docker run –name d-memcached -p 11211:11211 -d memcached:1.5</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/05/docker/how-to-install-mongo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/docker/how-to-install-mongo/" itemprop="url">Docker:mongo</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T16:21:51+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="install-mongo"><a href="#install-mongo" class="headerlink" title="install mongo"></a>install mongo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker search mongo</span><br><span class="line">sudo docker pull mongo:3.2</span><br></pre></td></tr></table></figure>
+<h2 id="show-images-list"><a href="#show-images-list" class="headerlink" title="show images list"></a>show images list</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mongo               3.2                 c2a3c30cef05        9 days ago          301MB</span><br><span class="line">hello-world         latest              f2a91732366c        2 weeks ago         1.85kB</span><br></pre></td></tr></table></figure>
+<h2 id="run-mongo"><a href="#run-mongo" class="headerlink" title="run mongo"></a>run mongo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run  --name some-mongo   -p 27017:27017   -d mongo:3.2</span><br><span class="line">sudo docker ps</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES</span><br><span class="line">ab77b469d968        mongo:3.2           &quot;docker-entrypoint.s…&quot;   25 seconds ago      Up 24 seconds       0.0.0.0:27017-&gt;27017/tcp   some-mongo</span><br></pre></td></tr></table></figure>
+<h2 id="how-to-verify-mongo-running"><a href="#how-to-verify-mongo-running" class="headerlink" title="how to verify mongo running"></a>how to verify mongo running</h2><p>open <a href="http://localhost:27017/" target="_blank" rel="noopener">http://localhost:27017/</a>, will show</p>
+<p>It looks like you are trying to access MongoDB over HTTP on the native driver port.</p>
+<h2 id="using-docker-container-bash"><a href="#using-docker-container-bash" class="headerlink" title="using docker container bash"></a>using docker container bash</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it &lt;container_ID&gt; sh</span><br><span class="line"># mongo</span><br><span class="line"># &gt; db.user.insert(&#123;name:&quot;alan&quot;&#125;);</span><br><span class="line"># &gt; db.user.find();</span><br><span class="line"># &gt; exit</span><br><span class="line"># exit</span><br></pre></td></tr></table></figure>
+<h2 id="backup-mongo"><a href="#backup-mongo" class="headerlink" title="backup mongo"></a>backup mongo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp &lt;container_ID&gt;:/data/db ./20170101</span><br><span class="line">ls 20170101/</span><br></pre></td></tr></table></figure>
+<h2 id="stop-container"><a href="#stop-container" class="headerlink" title="stop container"></a>stop container</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker stop &lt;ocntainer_ID&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="some-useful-cmd"><a href="#some-useful-cmd" class="headerlink" title="some useful cmd"></a>some useful cmd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker container ls -a // list all container, include stopped</span><br><span class="line">sudo docker start &lt;container_name&gt; start a stopped container</span><br></pre></td></tr></table></figure>
+<h2 id="docker-cp"><a href="#docker-cp" class="headerlink" title="docker cp"></a>docker cp</h2><p>docker cp mycontainer：/opt/testnew/file.txt /opt/test/<br>docker cp /opt/test/file.txt mycontainer：/opt/testnew/</p>
+<p>sudo docker cp /home/liuli/backup/dump/* cn-prod:/dump</p>
+<p>sudo docker cp 2a1296fae066:/data/db /home/ubuntu/mongo-backup/04-23-2018-empty<br>sudo docker cp /home/ubuntu/mongo-backup/12-21-2017/* 2a1296fae066:/data/db</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/05/docker/how-to-build-nodejs-app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/docker/how-to-build-nodejs-app/" itemprop="url">Docker:how to build image</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T15:46:34+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="files"><a href="#files" class="headerlink" title="files"></a>files</h1><p>hello-world/<br>  ├── Dockerfile<br>  ├── index.js<br>  ├── package.json</p>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">FROM node:8-alpine</span><br><span class="line"></span><br><span class="line"># Create app directory</span><br><span class="line">WORKDIR /home/hello-world</span><br><span class="line"></span><br><span class="line"># Install app dependencies</span><br><span class="line"># A wildcard is used to ensure both package.json AND package-lock.json are copied</span><br><span class="line"># where available (npm@5+)</span><br><span class="line">COPY package*.json ./</span><br><span class="line"></span><br><span class="line">RUN npm install</span><br><span class="line"># If you are building your code for production</span><br><span class="line"># RUN npm install --only=production</span><br><span class="line"></span><br><span class="line"># Bundle app source</span><br><span class="line">COPY . .</span><br><span class="line"></span><br><span class="line">EXPOSE 8080</span><br><span class="line">CMD [ &quot;npm&quot;, &quot;start&quot; ]</span><br></pre></td></tr></table></figure>
+<p>ref:<a href="https://nodejs.org/en/docs/guides/nodejs-docker-webapp/" target="_blank" rel="noopener">https://nodejs.org/en/docs/guides/nodejs-docker-webapp/</a></p>
+<h2 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h2><h2 id="server-js"><a href="#server-js" class="headerlink" title="server.js"></a>server.js</h2><h1 id="build"><a href="#build" class="headerlink" title="build"></a>build</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker build -t liuliaixue/nodejs-hello-world .</span><br></pre></td></tr></table></figure>
           
         
       
@@ -579,611 +1108,6 @@
           
             <h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># sudo docker pull mysql</span><br><span class="line">$ sudo docker pull mysql:5.6</span><br><span class="line"></span><br><span class="line">$ sudo docker run -p 3306:3306 --name mymysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br><span class="line">$ sudo docker images</span><br><span class="line"></span><br><span class="line">$ mysql -h127.0.0.1 -p3306 -uroot -p123456</span><br><span class="line"></span><br><span class="line">$ sudo docker stop &#123;container-id &#125;</span><br><span class="line">$ sudo docker rm &#123;container-id &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-client-core-5.7 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># sudo apt-get remove --purge mysql-client-core-5.7   </span><br><span class="line"># sudo apt-get autoremove --purge mysql-client-core-5.7</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/变量提升/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/nodejs/变量提升/" itemprop="url">javascript 变量提升</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	function test_1() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_1();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_1&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_2() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		function print(string) &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_2();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_2&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_3() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	test_3();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_3&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_4() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	test_4();</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_4&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_5() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	setTimeout(() =&gt; &#123;</span><br><span class="line">		test_5()</span><br><span class="line">	&#125;, 100);</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_5&apos;, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/removeFolder/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/nodejs/removeFolder/" itemprop="url">nodejs remove folder</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const path = require(&apos;path&apos;)</span><br><span class="line">const folder = &apos;/tmp/ttcc&apos;;</span><br><span class="line">const filename = &apos;/tmp/ttx/task.sql&apos;;</span><br><span class="line">if(0) &#123;</span><br><span class="line">  const filenames = fs.readdirSync(&apos;/tmp/ttcc&apos;);</span><br><span class="line">  console.log(filenames)</span><br><span class="line">  for(let filename of filenames) &#123;</span><br><span class="line">    const file = path.resolve(folder, filename);</span><br><span class="line">    console.log(file)</span><br><span class="line">    fs.unlinkSync(file)</span><br><span class="line">  &#125;</span><br><span class="line">  fs.rmdirSync(folder)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(1)&#123;</span><br><span class="line">  const folder = path.dirname(filename);</span><br><span class="line">  console.log(folder)</span><br><span class="line">  fs.unlinkSync(filename);</span><br><span class="line">  fs.rmdirSync(folder)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/rabbitMQ-disconnect/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/nodejs/rabbitMQ-disconnect/" itemprop="url">converter突然连接不上rabbitMQ ？</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>安装rabbitMQ后，以服务的方式启动（开机启动），某些时候回出现converter连接不上的问题</p>
-<p>先在 windows-任务管理器-服务 中停用 RabbitMQ,以服务器的方式启动</p>
-<pre><code>&quot;c:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.4\sbin\rabbitmq-server.bat&quot; start
-</code></pre><p>如果这种方式可以正常转换模型，那么你遇到了和作者相同的问题</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/javascript_html_css/bootbox.confirm_bootbox.dialog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/javascript_html_css/bootbox.confirm_bootbox.dialog/" itemprop="url">bootbox</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var confirmBox = function() &#123;</span><br><span class="line">    bootbox.confirm(&#123;</span><br><span class="line">        buttons: &#123;</span><br><span class="line">            confirm: &#123;</span><br><span class="line">                label: &apos;确认按钮&apos;,</span><br><span class="line">                className: &apos;btn-sm btn-primary&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            cancel: &#123;</span><br><span class="line">                label: &apos;取消按钮&apos;,</span><br><span class="line">                className: &apos;btn-sm btn-default&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        message: &apos;提示信息&apos;,</span><br><span class="line">        callback: function(result) &#123;</span><br><span class="line">            if (result) &#123;</span><br><span class="line">                console.log(&apos;点击确认按钮了&apos;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                //return false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        //title: &quot;bootbox confirm也可以添加标题哦&quot;,  </span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">bootbox.dialog(&#123;</span><br><span class="line">    title : &quot;修改密码&quot;,</span><br><span class="line">    message : &quot;&lt;div class=&apos;well &apos; style=&apos;margin-top:25px;&apos;&gt;&lt;form class=&apos;form-horizontal&apos; role=&apos;form&apos;&gt;&lt;div class=&apos;form-group&apos;&gt;&lt;label class=&apos;col-sm-3 control-label no-padding-right&apos; for=&apos;txtOldPwd&apos;&gt;旧密码&lt;/label&gt;&lt;div class=&apos;col-sm-9&apos;&gt;&lt;input type=&apos;text&apos; id=&apos;txtOldPwd&apos; placeholder=&apos;请输入旧密码&apos; class=&apos;col-xs-10 col-sm-5&apos; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&apos;space-4&apos;&gt;&lt;/div&gt;&lt;div class=&apos;form-group&apos;&gt;&lt;label class=&apos;col-sm-3 control-label no-padding-right&apos; for=&apos;txtNewPwd1&apos;&gt;新密码&lt;/label&gt;&lt;div class=&apos;col-sm-9&apos;&gt;&lt;input type=&apos;text&apos; id=&apos;txtNewPwd1&apos; placeholder=&apos;请输入新密码&apos; class=&apos;col-xs-10 col-sm-5&apos; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&apos;space-4&apos;&gt;&lt;/div&gt;&lt;div class=&apos;form-group&apos;&gt;&lt;label class=&apos;col-sm-3 control-label no-padding-right&apos; for=&apos;txtNewPwd2&apos;&gt;确认新密码&lt;/label&gt;&lt;div class=&apos;col-sm-9&apos;&gt;&lt;input type=&apos;text&apos; id=&apos;txtNewPwd2&apos; placeholder=&apos;再次输入新密码&apos; class=&apos;col-xs-10 col-sm-5&apos; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/form&gt;&lt;/div&gt;&quot;,</span><br><span class="line">    buttons : &#123;</span><br><span class="line">        &quot;success&quot; : &#123;</span><br><span class="line">            &quot;label&quot; : &quot;&lt;i class=&apos;icon-ok&apos;&gt;&lt;/i&gt; 保存&quot;,</span><br><span class="line">            &quot;className&quot; : &quot;btn-sm btn-success&quot;,</span><br><span class="line">            &quot;callback&quot; : function() &#123;</span><br><span class="line">                var txt1 = $(&quot;#txtOldPwd&quot;).val();</span><br><span class="line">                var txt2 = $(&quot;#txtNewPwd1&quot;).val();</span><br><span class="line">                var txt3 = $(&quot;#txtNewPwd2&quot;).val();</span><br><span class="line"> </span><br><span class="line">                if(txt1 == &quot;&quot; || txt2 == &quot;&quot; || txt3 == &quot;&quot;)&#123;</span><br><span class="line">                    bootbox.alert(&quot;密码不能为空&quot;);</span><br><span class="line">                    return false;</span><br><span class="line">                &#125;</span><br><span class="line">                if(txt2 != txt3 )&#123;</span><br><span class="line">                    bootbox.alert(&quot;两次输入新密码不一致，请重新输入!&quot;);</span><br><span class="line">                    return false;</span><br><span class="line">                &#125;</span><br><span class="line">                var info = &#123;&quot;opt&quot;:&quot;changepassword&quot;,&quot;oldpwd&quot;:txt1,&quot;newpwd1&quot;:txt2,&quot;newpwd2&quot;:txt3&#125;;</span><br><span class="line">                //$.post(&quot;../CommonServlet&quot;,info,function(data)&#123;</span><br><span class="line">                    bootbox.alert(&quot;密码更新成功&quot;);</span><br><span class="line">                //&#125;,&apos;json&apos;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;cancel&quot; : &#123;</span><br><span class="line">            &quot;label&quot; : &quot;&lt;i class=&apos;icon-info&apos;&gt;&lt;/i&gt; 取消&quot;,</span><br><span class="line">            &quot;className&quot; : &quot;btn-sm btn-danger&quot;,</span><br><span class="line">            &quot;callback&quot; : function() &#123; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/nodejs-fs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/nodejs/nodejs-fs/" itemprop="url">nodejs file system</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>fs</p>
-<h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.mkdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.mkdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.rmdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.rmdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="创建文件，删除文件"><a href="#创建文件，删除文件" class="headerlink" title="创建文件，删除文件"></a>创建文件，删除文件</h2><p>const buffer = Buffer.alloc(1024 * 1024);<br>fs.writeFileSync(‘file_1M’, buffer);<br>fs.unlinkSync(‘file_1M’)</p>
-<h3 id="只读日志文件"><a href="#只读日志文件" class="headerlink" title="只读日志文件"></a>只读日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const accessLogfile = fs.createWriteStream(&apos;./access.log&apos;, &#123; flags: &apos;a&apos; &#125;); //访问日志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const test = () =&gt; &#123;</span><br><span class="line">	for (let i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">		var now = new Date();</span><br><span class="line">		var time = now.getFullYear() + &apos;-&apos; + now.getMonth() + &apos;-&apos; + now.getDate() + &apos; &apos;</span><br><span class="line">			+ now.getHours() + &apos;:&apos; + now.getMinutes() + &apos;:&apos; + now.getSeconds();</span><br><span class="line">		accessLogfile.write(time + &apos;\r\n\r\n\r\n&apos;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	console.log(&apos;ccc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">module.exports = test;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1374,7 +1298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/mongo/how-to-install-robo3t-in-ubuntu/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/rabbitMQ-disconnect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -1393,7 +1317,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/01/mongo/how-to-install-robo3t-in-ubuntu/" itemprop="url">mongo可视化工具</a></h1>
+                <a class="post-title-link" href="/2018/05/01/nodejs/rabbitMQ-disconnect/" itemprop="url">converter突然连接不上rabbitMQ ？</a></h1>
         
 
         <div class="post-meta">
@@ -1445,11 +1369,134 @@
       
         
           
-            <h2 id="download-robo3t-tar-gz"><a href="#download-robo3t-tar-gz" class="headerlink" title="download robo3t.tar.gz"></a>download robo3t.tar.gz</h2><p>link <a href="https://robomongo.org/download" target="_blank" rel="noopener">https://robomongo.org/download</a></p>
-<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf package.tar.gz</span><br></pre></td></tr></table></figure>
-<h2 id="start-robo3t-error"><a href="#start-robo3t-error" class="headerlink" title="start robo3t error"></a>start robo3t error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">This application failed to start because it could not find or load the Qt platform plugin &quot;xcb&quot;</span><br><span class="line">in &quot;&quot;.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: xcb.</span><br><span class="line"></span><br><span class="line">Reinstalling the application may fix this problem.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
-<h2 id="how-to-fix"><a href="#how-to-fix" class="headerlink" title="how to fix"></a>how to fix</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 mkdir ~/robo-backup</span><br><span class="line">2 mv robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++* ~/robo-backup/</span><br><span class="line">3 robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t</span><br></pre></td></tr></table></figure>
-<p>ref:<br><a href="https://www.cnblogs.com/hexin0614/p/7487191.html" target="_blank" rel="noopener">https://www.cnblogs.com/hexin0614/p/7487191.html</a><br><a href="https://askubuntu.com/questions/941383/cannot-run-robo-3t-qt-app" target="_blank" rel="noopener">https://askubuntu.com/questions/941383/cannot-run-robo-3t-qt-app</a><br><a href="https://github.com/Studio3T/robomongo/issues/1384" target="_blank" rel="noopener">https://github.com/Studio3T/robomongo/issues/1384</a></p>
+            <p>安装rabbitMQ后，以服务的方式启动（开机启动），某些时候回出现converter连接不上的问题</p>
+<p>先在 windows-任务管理器-服务 中停用 RabbitMQ,以服务器的方式启动</p>
+<pre><code>&quot;c:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.4\sbin\rabbitmq-server.bat&quot; start
+</code></pre><p>如果这种方式可以正常转换模型，那么你遇到了和作者相同的问题</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/nodejs-fs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/01/nodejs/nodejs-fs/" itemprop="url">nodejs file system</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>fs</p>
+<h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.mkdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.mkdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.rmdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.rmdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="创建文件，删除文件"><a href="#创建文件，删除文件" class="headerlink" title="创建文件，删除文件"></a>创建文件，删除文件</h2><p>const buffer = Buffer.alloc(1024 * 1024);<br>fs.writeFileSync(‘file_1M’, buffer);<br>fs.unlinkSync(‘file_1M’)</p>
+<h3 id="只读日志文件"><a href="#只读日志文件" class="headerlink" title="只读日志文件"></a>只读日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const accessLogfile = fs.createWriteStream(&apos;./access.log&apos;, &#123; flags: &apos;a&apos; &#125;); //访问日志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const test = () =&gt; &#123;</span><br><span class="line">	for (let i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">		var now = new Date();</span><br><span class="line">		var time = now.getFullYear() + &apos;-&apos; + now.getMonth() + &apos;-&apos; + now.getDate() + &apos; &apos;</span><br><span class="line">			+ now.getHours() + &apos;:&apos; + now.getMinutes() + &apos;:&apos; + now.getSeconds();</span><br><span class="line">		accessLogfile.write(time + &apos;\r\n\r\n\r\n&apos;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	console.log(&apos;ccc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">module.exports = test;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1535,7 +1582,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

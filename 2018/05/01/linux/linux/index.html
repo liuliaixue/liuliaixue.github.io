@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,vscode.deb,chmod,node,tar," />
+  <meta name="keywords" content="linux,chmod,vscode.deb,nodejs,tar," />
 
 
 
@@ -95,14 +95,14 @@
 
 
 <meta name="description" content="linux 查看命令所在目录12whereis gitwhich git linux 查看文件信息推荐三种方法123ll /usr/bin/gitls -l /usr/bin/gitls -lh /usr/bin/git 更改文件（夹）权限1sudo chmod -R 777 filepath 安装vscode.deb123// ref https://code.visualstudio.com/">
-<meta name="keywords" content="linux,vscode.deb,chmod,node,tar">
+<meta name="keywords" content="linux,chmod,vscode.deb,nodejs,tar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux下常用命令">
 <meta property="og:url" content="http://liuliaixue.top/2018/05/01/linux/linux/index.html">
 <meta property="og:site_name" content="liuliaixue">
 <meta property="og:description" content="linux 查看命令所在目录12whereis gitwhich git linux 查看文件信息推荐三种方法123ll /usr/bin/gitls -l /usr/bin/gitls -lh /usr/bin/git 更改文件（夹）权限1sudo chmod -R 777 filepath 安装vscode.deb123// ref https://code.visualstudio.com/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-26T02:36:16.743Z">
+<meta property="og:updated_time" content="2018-06-05T07:50:41.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下常用命令">
 <meta name="twitter:description" content="linux 查看命令所在目录12whereis gitwhich git linux 查看文件信息推荐三种方法123ll /usr/bin/gitls -l /usr/bin/gitls -lh /usr/bin/git 更改文件（夹）权限1sudo chmod -R 777 filepath 安装vscode.deb123// ref https://code.visualstudio.com/">
@@ -337,12 +337,10 @@
 <h1 id="node-tar-gz"><a href="#node-tar-gz" class="headerlink" title="node (tar.gz)"></a>node (tar.gz)</h1><p>$ wget <a href="https://nodejs.org/dist/v8.9.3/node-v8.9.3.tar.gz" target="_blank" rel="noopener">https://nodejs.org/dist/v8.9.3/node-v8.9.3.tar.gz</a><br>$ tar zxvf node-v8.9.3.tar.gz<br><!-- sudo apt-get install gcc g++ --><br>$ ./configure<br>$ sudo make &amp;&amp; sudo make install</p>
 <h1 id="node-tar-xz"><a href="#node-tar-xz" class="headerlink" title="node(tar.xz)"></a>node(tar.xz)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://nodejs.org/dist/v8.9.3/node-v8.9.3-linux-x64.tar.xz</span><br><span class="line">$ xz -d node-v8.9.3-linux-x64.tar.xz</span><br><span class="line">$ tar xvf node-v8.9.3-linux-x64.tar</span><br><span class="line"></span><br><span class="line">$ vi ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>add below to you env<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NODE_HOME=/home/ubuntu/node-v8.9.3-linux-x64</span><br><span class="line">export PATH=$NODE_HOME/bin:$PATH</span><br></pre></td></tr></table></figure></p>
-<h1 id="ubuntu-16-04"><a href="#ubuntu-16-04" class="headerlink" title="ubuntu 16.04"></a>ubuntu 16.04</h1><p>安装 vitualBox 需要先安装<br>1.libsdl1.2debian(libsdl1.2debian is not installed)<br>2.libvpx</p>
 <h1 id="linux-查看自己是否被-ping"><a href="#linux-查看自己是否被-ping" class="headerlink" title="linux 查看自己是否被 ping"></a>linux 查看自己是否被 ping</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># view ip</span><br><span class="line">ifconfig -a</span><br><span class="line"># listen ping via opening tcp listener</span><br><span class="line">sudo tcpdump</span><br></pre></td></tr></table></figure>
 <h1 id="ssh-登录到-vm"><a href="#ssh-登录到-vm" class="headerlink" title="ssh 登录到 vm"></a>ssh 登录到 vm</h1><p>sudo apt-get install openssh-server<br>ssh <name>@<ip></ip></name></p>
 <h1 id="how-to-install-docker-in-ubuntu"><a href="#how-to-install-docker-in-ubuntu" class="headerlink" title="how to install docker in ubuntu"></a>how to install docker in ubuntu</h1><p><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/</a></p>
-<h1 id="tar-gz-amp-tar-bz2"><a href="#tar-gz-amp-tar-bz2" class="headerlink" title="tar.gz &amp; tar.bz2"></a>tar.gz &amp; tar.bz2</h1><p>.tar.gz<br>tar   -zxvf   xx.tar.gz<br>.tar.bz2<br>tar   -jxvf    xx.tar.bz2</p>
-
+<h1 id="tar-gz-amp-tar-bz2"><a href="#tar-gz-amp-tar-bz2" class="headerlink" title="tar.gz &amp; tar.bz2"></a>tar.gz &amp; tar.bz2</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#.tar.gz            </span><br><span class="line">tar   -zxvf   xx.tar.gz</span><br><span class="line">#.tar.bz2           </span><br><span class="line">tar   -jxvf    xx.tar.bz2</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -361,11 +359,11 @@
           
             <a href="/tags/linux/" rel="tag"># linux</a>
           
-            <a href="/tags/vscode-deb/" rel="tag"># vscode.deb</a>
-          
             <a href="/tags/chmod/" rel="tag"># chmod</a>
           
-            <a href="/tags/node/" rel="tag"># node</a>
+            <a href="/tags/vscode-deb/" rel="tag"># vscode.deb</a>
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
           
             <a href="/tags/tar/" rel="tag"># tar</a>
           
@@ -380,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/01/linux/how--to-install-deb/" rel="next" title="how to install deb package">
-                <i class="fa fa-chevron-left"></i> how to install deb package
+              <a href="/2018/05/01/knows/stripe-alipay/" rel="next" title="stripe 接入支付宝">
+                <i class="fa fa-chevron-left"></i> stripe 接入支付宝
               </a>
             
           </div>
@@ -390,8 +388,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/01/nodejs/sleep/" rel="prev" title="nodejs sleep">
-                nodejs sleep <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/01/javascript_html_css/bootbox.confirm_bootbox.dialog/" rel="prev" title="bootbox">
+                bootbox <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -469,7 +467,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -517,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-查看命令所在目录"><span class="nav-number">1.</span> <span class="nav-text">linux 查看命令所在目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-查看文件信息"><span class="nav-number">2.</span> <span class="nav-text">linux 查看文件信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更改文件（夹）权限"><span class="nav-number">3.</span> <span class="nav-text">更改文件（夹）权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装vscode-deb"><span class="nav-number">4.</span> <span class="nav-text">安装vscode.deb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#node-tar-gz"><span class="nav-number">5.</span> <span class="nav-text">node (tar.gz)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#node-tar-xz"><span class="nav-number">6.</span> <span class="nav-text">node(tar.xz)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu-16-04"><span class="nav-number">7.</span> <span class="nav-text">ubuntu 16.04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-查看自己是否被-ping"><span class="nav-number">8.</span> <span class="nav-text">linux 查看自己是否被 ping</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh-登录到-vm"><span class="nav-number">9.</span> <span class="nav-text">ssh 登录到 vm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how-to-install-docker-in-ubuntu"><span class="nav-number">10.</span> <span class="nav-text">how to install docker in ubuntu</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tar-gz-amp-tar-bz2"><span class="nav-number">11.</span> <span class="nav-text">tar.gz &amp; tar.bz2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-查看命令所在目录"><span class="nav-number">1.</span> <span class="nav-text">linux 查看命令所在目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-查看文件信息"><span class="nav-number">2.</span> <span class="nav-text">linux 查看文件信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更改文件（夹）权限"><span class="nav-number">3.</span> <span class="nav-text">更改文件（夹）权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装vscode-deb"><span class="nav-number">4.</span> <span class="nav-text">安装vscode.deb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#node-tar-gz"><span class="nav-number">5.</span> <span class="nav-text">node (tar.gz)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#node-tar-xz"><span class="nav-number">6.</span> <span class="nav-text">node(tar.xz)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-查看自己是否被-ping"><span class="nav-number">7.</span> <span class="nav-text">linux 查看自己是否被 ping</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh-登录到-vm"><span class="nav-number">8.</span> <span class="nav-text">ssh 登录到 vm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how-to-install-docker-in-ubuntu"><span class="nav-number">9.</span> <span class="nav-text">how to install docker in ubuntu</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tar-gz-amp-tar-bz2"><span class="nav-number">10.</span> <span class="nav-text">tar.gz &amp; tar.bz2</span></a></li></ol></div>
             
 
           </div>

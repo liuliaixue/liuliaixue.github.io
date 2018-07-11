@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/变量提升/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/nodejs-fs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/01/nodejs/变量提升/" itemprop="url">javascript 变量提升</a></h1>
+                <a class="post-title-link" href="/2018/05/01/nodejs/nodejs-fs/" itemprop="url">nodejs file system</a></h1>
         
 
         <div class="post-meta">
@@ -332,7 +332,131 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	function test_1() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_1();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_1&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_2() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		function print(string) &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_2();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_2&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_3() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	test_3();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_3&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_4() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	test_4();</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_4&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_5() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	setTimeout(() =&gt; &#123;</span><br><span class="line">		test_5()</span><br><span class="line">	&#125;, 100);</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_5&apos;, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>fs</p>
+<h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.mkdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.mkdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.rmdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.rmdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="创建文件，删除文件"><a href="#创建文件，删除文件" class="headerlink" title="创建文件，删除文件"></a>创建文件，删除文件</h2><p>const buffer = Buffer.alloc(1024 * 1024);<br>fs.writeFileSync(‘file_1M’, buffer);<br>fs.unlinkSync(‘file_1M’)</p>
+<h3 id="只读日志文件"><a href="#只读日志文件" class="headerlink" title="只读日志文件"></a>只读日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const accessLogfile = fs.createWriteStream(&apos;./access.log&apos;, &#123; flags: &apos;a&apos; &#125;); //访问日志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const test = () =&gt; &#123;</span><br><span class="line">	for (let i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">		var now = new Date();</span><br><span class="line">		var time = now.getFullYear() + &apos;-&apos; + now.getMonth() + &apos;-&apos; + now.getDate() + &apos; &apos;</span><br><span class="line">			+ now.getHours() + &apos;:&apos; + now.getMinutes() + &apos;:&apos; + now.getSeconds();</span><br><span class="line">		accessLogfile.write(time + &apos;\r\n\r\n\r\n&apos;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	console.log(&apos;ccc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">module.exports = test;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/javascript_html_css/long-text-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/01/javascript_html_css/long-text-css/" itemprop="url">css隐藏多余文本</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    white-space: nowrap; //不换行</span><br><span class="line">    width: 200px;//宽度</span><br><span class="line">    overflow: hidden;//多余的隐藏</span><br><span class="line">    text-overflow: ellipsis;//多余的显示成点点点</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -503,6 +627,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/变量提升/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/01/nodejs/变量提升/" itemprop="url">javascript 变量提升</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	function test_1() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_1();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_1&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_2() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		function print(string) &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_2();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_2&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_3() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	test_3();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_3&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_4() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	test_4();</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_4&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_5() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	setTimeout(() =&gt; &#123;</span><br><span class="line">		test_5()</span><br><span class="line">	&#125;, 100);</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_5&apos;, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/removeFolder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -622,7 +865,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/rabbitMQ-disconnect/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/jQuery/$.post里面的boolean会变成string/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -641,7 +884,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/01/nodejs/rabbitMQ-disconnect/" itemprop="url">converter突然连接不上rabbitMQ ？</a></h1>
+                <a class="post-title-link" href="/2018/05/01/jQuery/$.post里面的boolean会变成string/" itemprop="url">$.ajax 中boolean变成string</a></h1>
         
 
         <div class="post-meta">
@@ -693,135 +936,10 @@
       
         
           
-            <p>安装rabbitMQ后，以服务的方式启动（开机启动），某些时候回出现converter连接不上的问题</p>
-<p>先在 windows-任务管理器-服务 中停用 RabbitMQ,以服务器的方式启动</p>
-<pre><code>&quot;c:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.4\sbin\rabbitmq-server.bat&quot; start
-</code></pre><p>如果这种方式可以正常转换模型，那么你遇到了和作者相同的问题</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/mongo/how-to-install-robo3t-in-ubuntu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/mongo/how-to-install-robo3t-in-ubuntu/" itemprop="url">mongo可视化工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="download-robo3t-tar-gz"><a href="#download-robo3t-tar-gz" class="headerlink" title="download robo3t.tar.gz"></a>download robo3t.tar.gz</h2><p>link <a href="https://robomongo.org/download" target="_blank" rel="noopener">https://robomongo.org/download</a></p>
-<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf package.tar.gz</span><br></pre></td></tr></table></figure>
-<h2 id="start-robo3t-error"><a href="#start-robo3t-error" class="headerlink" title="start robo3t error"></a>start robo3t error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">This application failed to start because it could not find or load the Qt platform plugin &quot;xcb&quot;</span><br><span class="line">in &quot;&quot;.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: xcb.</span><br><span class="line"></span><br><span class="line">Reinstalling the application may fix this problem.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
-<h2 id="how-to-fix"><a href="#how-to-fix" class="headerlink" title="how to fix"></a>how to fix</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 mkdir ~/robo-backup</span><br><span class="line">2 mv robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++* ~/robo-backup/</span><br><span class="line">3 robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t</span><br></pre></td></tr></table></figure>
-<p>ref:<br><a href="https://www.cnblogs.com/hexin0614/p/7487191.html" target="_blank" rel="noopener">https://www.cnblogs.com/hexin0614/p/7487191.html</a><br><a href="https://askubuntu.com/questions/941383/cannot-run-robo-3t-qt-app" target="_blank" rel="noopener">https://askubuntu.com/questions/941383/cannot-run-robo-3t-qt-app</a><br><a href="https://github.com/Studio3T/robomongo/issues/1384" target="_blank" rel="noopener">https://github.com/Studio3T/robomongo/issues/1384</a></p>
-
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var url = &apos;http://www.test.com/api/test&apos;</span><br><span class="line">var data = &#123;name:&apos;Xiaomi&apos;,member:true&#125;</span><br><span class="line">$.post(url, data, () =&gt; &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//express 服务器接收到的参数</span><br><span class="line">req.body.member === &apos;true&apos;// true</span><br></pre></td></tr></table></figure>
+<p>产生原因是,httpRequest header中 默认是 contentType = application/x-www-form-urlencoded, 如果相传boolean 应该改为 json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">		type: &apos;POST&apos;,</span><br><span class="line">		contentType: &apos;application/json; charset=utf-8&apos;,</span><br><span class="line">		url: url,</span><br><span class="line">		data: JSON.stringify(data),</span><br><span class="line">		success: (res) =&gt; &#123; &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
           
         
       
@@ -952,128 +1070,6 @@
 <p>$(‘input[name=”testradio”]:checked’).val(); </p>
 <p>或$(‘input:radio:checked’).val();</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/jQuery/$.post里面的boolean会变成string/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/jQuery/$.post里面的boolean会变成string/" itemprop="url">$.ajax 中boolean变成string</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var url = &apos;http://www.test.com/api/test&apos;</span><br><span class="line">var data = &#123;name:&apos;Xiaomi&apos;,member:true&#125;</span><br><span class="line">$.post(url, data, () =&gt; &#123;&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//express 服务器接收到的参数</span><br><span class="line">req.body.member === &apos;true&apos;// true</span><br></pre></td></tr></table></figure>
-<p>产生原因是,httpRequest header中 默认是 contentType = application/x-www-form-urlencoded, 如果相传boolean 应该改为 json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">		type: &apos;POST&apos;,</span><br><span class="line">		contentType: &apos;application/json; charset=utf-8&apos;,</span><br><span class="line">		url: url,</span><br><span class="line">		data: JSON.stringify(data),</span><br><span class="line">		success: (res) =&gt; &#123; &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1363,7 +1359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/nodejs-fs/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/mongo/how-to-install-robo3t-in-ubuntu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -1382,7 +1378,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/01/nodejs/nodejs-fs/" itemprop="url">nodejs file system</a></h1>
+                <a class="post-title-link" href="/2018/05/01/mongo/how-to-install-robo3t-in-ubuntu/" itemprop="url">mongo可视化工具</a></h1>
         
 
         <div class="post-meta">
@@ -1434,11 +1430,11 @@
       
         
           
-            <p>fs</p>
-<h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.mkdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.mkdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.rmdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.rmdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="创建文件，删除文件"><a href="#创建文件，删除文件" class="headerlink" title="创建文件，删除文件"></a>创建文件，删除文件</h2><p>const buffer = Buffer.alloc(1024 * 1024);<br>fs.writeFileSync(‘file_1M’, buffer);<br>fs.unlinkSync(‘file_1M’)</p>
-<h3 id="只读日志文件"><a href="#只读日志文件" class="headerlink" title="只读日志文件"></a>只读日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const accessLogfile = fs.createWriteStream(&apos;./access.log&apos;, &#123; flags: &apos;a&apos; &#125;); //访问日志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const test = () =&gt; &#123;</span><br><span class="line">	for (let i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">		var now = new Date();</span><br><span class="line">		var time = now.getFullYear() + &apos;-&apos; + now.getMonth() + &apos;-&apos; + now.getDate() + &apos; &apos;</span><br><span class="line">			+ now.getHours() + &apos;:&apos; + now.getMinutes() + &apos;:&apos; + now.getSeconds();</span><br><span class="line">		accessLogfile.write(time + &apos;\r\n\r\n\r\n&apos;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	console.log(&apos;ccc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">module.exports = test;</span><br></pre></td></tr></table></figure>
+            <h2 id="download-robo3t-tar-gz"><a href="#download-robo3t-tar-gz" class="headerlink" title="download robo3t.tar.gz"></a>download robo3t.tar.gz</h2><p>link <a href="https://robomongo.org/download" target="_blank" rel="noopener">https://robomongo.org/download</a></p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf package.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="start-robo3t-error"><a href="#start-robo3t-error" class="headerlink" title="start robo3t error"></a>start robo3t error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">This application failed to start because it could not find or load the Qt platform plugin &quot;xcb&quot;</span><br><span class="line">in &quot;&quot;.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: xcb.</span><br><span class="line"></span><br><span class="line">Reinstalling the application may fix this problem.</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
+<h2 id="how-to-fix"><a href="#how-to-fix" class="headerlink" title="how to fix"></a>how to fix</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 mkdir ~/robo-backup</span><br><span class="line">2 mv robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++* ~/robo-backup/</span><br><span class="line">3 robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t</span><br></pre></td></tr></table></figure>
+<p>ref:<br><a href="https://www.cnblogs.com/hexin0614/p/7487191.html" target="_blank" rel="noopener">https://www.cnblogs.com/hexin0614/p/7487191.html</a><br><a href="https://askubuntu.com/questions/941383/cannot-run-robo-3t-qt-app" target="_blank" rel="noopener">https://askubuntu.com/questions/941383/cannot-run-robo-3t-qt-app</a><br><a href="https://github.com/Studio3T/robomongo/issues/1384" target="_blank" rel="noopener">https://github.com/Studio3T/robomongo/issues/1384</a></p>
 
           
         
@@ -1524,7 +1520,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

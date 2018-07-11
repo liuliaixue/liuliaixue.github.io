@@ -384,6 +384,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/07/10/react-lifecycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/10/react-lifecycle/" itemprop="url">React lifecycle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T22:04:51+08:00">
+                2018-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="React-Lifecycle"><a href="#React-Lifecycle" class="headerlink" title="React Lifecycle"></a>React Lifecycle</h1><h2 id="首次渲染"><a href="#首次渲染" class="headerlink" title="首次渲染"></a>首次渲染</h2><p>1、getDefaultProps(): <strong>Props</strong><br>2、getInitialState(): <strong>State</strong><br>3、componentWillMount<br>4、render<br>5、componentDidMount</p>
+<h2 id="修改state后更新"><a href="#修改state后更新" class="headerlink" title="修改state后更新"></a>修改state后更新</h2><p>1、shouldComponentUpdate(): <strong>boolean</strong><br>2、componentWillUpdate<br>3、render<br>4、componentDidUpdate</p>
+<h2 id="修改-props"><a href="#修改-props" class="headerlink" title="修改 props"></a>修改 props</h2><p>1、componentWillReceiveProps(nextProps: <strong>Props</strong>)<br>2、shouldComponentUpdate<br>3、componentWillUpdate<br>4、render<br>5、componentDidUpdate</p>
+<p>ref: <a href="https://segmentfault.com/a/1190000004168886" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004168886</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/07/docker/postgres/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1279,7 +1402,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/nodejs-fs/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/mongo/mongo游标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -1298,7 +1421,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/01/nodejs/nodejs-fs/" itemprop="url">nodejs file system</a></h1>
+                <a class="post-title-link" href="/2018/05/01/mongo/mongo游标/" itemprop="url">mongo游标</a></h1>
         
 
         <div class="post-meta">
@@ -1350,131 +1473,30 @@
       
         
           
-            <p>fs</p>
-<h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.mkdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.mkdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.rmdirSync(&apos;folder_name_1&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fs.rmdir(&apos;folder_name_2&apos;, function(err) &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="创建文件，删除文件"><a href="#创建文件，删除文件" class="headerlink" title="创建文件，删除文件"></a>创建文件，删除文件</h2><p>const buffer = Buffer.alloc(1024 * 1024);<br>fs.writeFileSync(‘file_1M’, buffer);<br>fs.unlinkSync(‘file_1M’)</p>
-<h3 id="只读日志文件"><a href="#只读日志文件" class="headerlink" title="只读日志文件"></a>只读日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const accessLogfile = fs.createWriteStream(&apos;./access.log&apos;, &#123; flags: &apos;a&apos; &#125;); //访问日志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const test = () =&gt; &#123;</span><br><span class="line">	for (let i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">		var now = new Date();</span><br><span class="line">		var time = now.getFullYear() + &apos;-&apos; + now.getMonth() + &apos;-&apos; + now.getDate() + &apos; &apos;</span><br><span class="line">			+ now.getHours() + &apos;:&apos; + now.getMinutes() + &apos;:&apos; + now.getSeconds();</span><br><span class="line">		accessLogfile.write(time + &apos;\r\n\r\n\r\n&apos;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	console.log(&apos;ccc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">module.exports = test;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/变量提升/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/nodejs/变量提升/" itemprop="url">javascript 变量提升</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	function test_1() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_1();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_1&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_2() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		function print(string) &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_2();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_2&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_3() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	test_3();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_3&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_4() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	test_4();</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_4&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_5() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	setTimeout(() =&gt; &#123;</span><br><span class="line">		test_5()</span><br><span class="line">	&#125;, 100);</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_5&apos;, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="mongodb-游标"><a href="#mongodb-游标" class="headerlink" title="mongodb 游标"></a>mongodb 游标</h2><p>在查询mongodb时， 有时需要 遍历 <strong>整个</strong> collection或者 批处理<strong>大量</strong>的数据，用普通的find()会消耗大量内存且不便于操作</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.find(query, projection);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>document</td>
+<td>可选. 使用查询操作符指定查询条件</td>
+</tr>
+<tr>
+<td>projection</td>
+<td>document</td>
+<td>指定使用投影运算符返回的字段省略此参数返回匹配文档中的所有字段</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">async function readDataFromDB(db, col, query, projection) &#123;</span><br><span class="line">  let resultArr = [];</span><br><span class="line"></span><br><span class="line">  const cursor = db.collection(col).find(query, projection);</span><br><span class="line">  for (let doc = await cursor.next(); doc != null; doc = await cursor.next())&#123;</span><br><span class="line">    resultArr.push(doc);</span><br><span class="line">  &#125;</span><br><span class="line">  return await Promise.all(resultArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1559,7 +1581,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1572,7 +1594,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">84</span>
+                <span class="site-state-item-count">86</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

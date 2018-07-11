@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mongo,linux,mongo cursor," />
+  <meta name="keywords" content="react,lifecycle," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="mongodb 游标在查询mongodb时， 有时需要 遍历 整个 collection或者 批处理大量的数据，用普通的find()会消耗大量内存且不便于操作 用法1db.collection.find(query, projection);    参数 类型 描述     query document 可选. 使用查询操作符指定查询条件   projection document 指定使用投影运">
-<meta name="keywords" content="mongo,linux,mongo cursor">
+<meta name="description" content="React Lifecycle首次渲染1、getDefaultProps(): Props2、getInitialState(): State3、componentWillMount4、render5、componentDidMount 修改state后更新1、shouldComponentUpdate(): boolean2、componentWillUpdate3、render4、compon">
+<meta name="keywords" content="react,lifecycle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongo游标">
-<meta property="og:url" content="http://liuliaixue.top/2018/05/01/mongo/mongo游标/index.html">
+<meta property="og:title" content="React lifecycle">
+<meta property="og:url" content="http://liuliaixue.top/2018/07/10/react-lifecycle/index.html">
 <meta property="og:site_name" content="liuliaixue">
-<meta property="og:description" content="mongodb 游标在查询mongodb时， 有时需要 遍历 整个 collection或者 批处理大量的数据，用普通的find()会消耗大量内存且不便于操作 用法1db.collection.find(query, projection);    参数 类型 描述     query document 可选. 使用查询操作符指定查询条件   projection document 指定使用投影运">
+<meta property="og:description" content="React Lifecycle首次渲染1、getDefaultProps(): Props2、getInitialState(): State3、componentWillMount4、render5、componentDidMount 修改state后更新1、shouldComponentUpdate(): boolean2、componentWillUpdate3、render4、compon">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-26T02:37:27.005Z">
+<meta property="og:updated_time" content="2018-07-11T14:36:18.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongo游标">
-<meta name="twitter:description" content="mongodb 游标在查询mongodb时， 有时需要 遍历 整个 collection或者 批处理大量的数据，用普通的find()会消耗大量内存且不便于操作 用法1db.collection.find(query, projection);    参数 类型 描述     query document 可选. 使用查询操作符指定查询条件   projection document 指定使用投影运">
+<meta name="twitter:title" content="React lifecycle">
+<meta name="twitter:description" content="React Lifecycle首次渲染1、getDefaultProps(): Props2、getInitialState(): State3、componentWillMount4、render5、componentDidMount 修改state后更新1、shouldComponentUpdate(): boolean2、componentWillUpdate3、render4、compon">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://liuliaixue.top/2018/05/01/mongo/mongo游标/"/>
+  <link rel="canonical" href="http://liuliaixue.top/2018/07/10/react-lifecycle/"/>
 
 
 
 
 
-  <title>mongo游标 | liuliaixue</title>
+  <title>React lifecycle | liuliaixue</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/mongo/mongo游标/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/07/10/react-lifecycle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mongo游标</h1>
+          <h1 class="post-title" itemprop="name headline">React lifecycle</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T22:04:51+08:00">
+                2018-07-10
               </time>
             
 
@@ -330,30 +330,11 @@
       
 
       
-        <h2 id="mongodb-游标"><a href="#mongodb-游标" class="headerlink" title="mongodb 游标"></a>mongodb 游标</h2><p>在查询mongodb时， 有时需要 遍历 <strong>整个</strong> collection或者 批处理<strong>大量</strong>的数据，用普通的find()会消耗大量内存且不便于操作</p>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.find(query, projection);</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>query</td>
-<td>document</td>
-<td>可选. 使用查询操作符指定查询条件</td>
-</tr>
-<tr>
-<td>projection</td>
-<td>document</td>
-<td>指定使用投影运算符返回的字段省略此参数返回匹配文档中的所有字段</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">async function readDataFromDB(db, col, query, projection) &#123;</span><br><span class="line">  let resultArr = [];</span><br><span class="line"></span><br><span class="line">  const cursor = db.collection(col).find(query, projection);</span><br><span class="line">  for (let doc = await cursor.next(); doc != null; doc = await cursor.next())&#123;</span><br><span class="line">    resultArr.push(doc);</span><br><span class="line">  &#125;</span><br><span class="line">  return await Promise.all(resultArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="React-Lifecycle"><a href="#React-Lifecycle" class="headerlink" title="React Lifecycle"></a>React Lifecycle</h1><h2 id="首次渲染"><a href="#首次渲染" class="headerlink" title="首次渲染"></a>首次渲染</h2><p>1、getDefaultProps(): <strong>Props</strong><br>2、getInitialState(): <strong>State</strong><br>3、componentWillMount<br>4、render<br>5、componentDidMount</p>
+<h2 id="修改state后更新"><a href="#修改state后更新" class="headerlink" title="修改state后更新"></a>修改state后更新</h2><p>1、shouldComponentUpdate(): <strong>boolean</strong><br>2、componentWillUpdate<br>3、render<br>4、componentDidUpdate</p>
+<h2 id="修改-props"><a href="#修改-props" class="headerlink" title="修改 props"></a>修改 props</h2><p>1、componentWillReceiveProps(nextProps: <strong>Props</strong>)<br>2、shouldComponentUpdate<br>3、componentWillUpdate<br>4、render<br>5、componentDidUpdate</p>
+<p>ref: <a href="https://segmentfault.com/a/1190000004168886" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004168886</a></p>
+
       
     </div>
     
@@ -370,11 +351,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mongo/" rel="tag"># mongo</a>
+            <a href="/tags/react/" rel="tag"># react</a>
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/mongo-cursor/" rel="tag"># mongo cursor</a>
+            <a href="/tags/lifecycle/" rel="tag"># lifecycle</a>
           
         </div>
       
@@ -387,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/01/nodejs/变量提升/" rel="next" title="javascript 变量提升">
-                <i class="fa fa-chevron-left"></i> javascript 变量提升
+              <a href="/2018/06/07/docker/postgres/" rel="next" title="docker postgres installation">
+                <i class="fa fa-chevron-left"></i> docker postgres installation
               </a>
             
           </div>
@@ -397,8 +376,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/26/docker/mysql/" rel="prev" title="mysql">
-                mysql <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/10/nodejs/handle-error-in-promise/" rel="prev" title="handle error in promise">
+                handle error in promise <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -524,7 +503,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mongodb-游标"><span class="nav-number">1.</span> <span class="nav-text">mongodb 游标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">1.1.</span> <span class="nav-text">用法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Lifecycle"><span class="nav-number">1.</span> <span class="nav-text">React Lifecycle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首次渲染"><span class="nav-number">1.1.</span> <span class="nav-text">首次渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改state后更新"><span class="nav-number">1.2.</span> <span class="nav-text">修改state后更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-props"><span class="nav-number">1.3.</span> <span class="nav-text">修改 props</span></a></li></ol></li></ol></div>
             
 
           </div>

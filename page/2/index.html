@@ -261,6 +261,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/05/docker/how-to-install-mongo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/docker/how-to-install-mongo/" itemprop="url">Docker:mongo</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T16:21:51+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="install-mongo"><a href="#install-mongo" class="headerlink" title="install mongo"></a>install mongo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker search mongo</span><br><span class="line">sudo docker pull mongo:3.2</span><br></pre></td></tr></table></figure>
+<h2 id="show-images-list"><a href="#show-images-list" class="headerlink" title="show images list"></a>show images list</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mongo               3.2                 c2a3c30cef05        9 days ago          301MB</span><br><span class="line">hello-world         latest              f2a91732366c        2 weeks ago         1.85kB</span><br></pre></td></tr></table></figure>
+<h2 id="run-mongo"><a href="#run-mongo" class="headerlink" title="run mongo"></a>run mongo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run  --name some-mongo   -p 27017:27017   -d mongo:3.2</span><br><span class="line">sudo docker ps</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES</span><br><span class="line">ab77b469d968        mongo:3.2           &quot;docker-entrypoint.s…&quot;   25 seconds ago      Up 24 seconds       0.0.0.0:27017-&gt;27017/tcp   some-mongo</span><br></pre></td></tr></table></figure>
+<h2 id="how-to-verify-mongo-running"><a href="#how-to-verify-mongo-running" class="headerlink" title="how to verify mongo running"></a>how to verify mongo running</h2><p>open <a href="http://localhost:27017/" target="_blank" rel="noopener">http://localhost:27017/</a>, will show</p>
+<p>It looks like you are trying to access MongoDB over HTTP on the native driver port.</p>
+<h2 id="using-docker-container-bash"><a href="#using-docker-container-bash" class="headerlink" title="using docker container bash"></a>using docker container bash</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it &lt;container_ID&gt; sh</span><br><span class="line"># mongo</span><br><span class="line"># &gt; db.user.insert(&#123;name:&quot;alan&quot;&#125;);</span><br><span class="line"># &gt; db.user.find();</span><br><span class="line"># &gt; exit</span><br><span class="line"># exit</span><br></pre></td></tr></table></figure>
+<h2 id="backup-mongo"><a href="#backup-mongo" class="headerlink" title="backup mongo"></a>backup mongo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp &lt;container_ID&gt;:/data/db ./20170101</span><br><span class="line">ls 20170101/</span><br></pre></td></tr></table></figure>
+<h2 id="stop-container"><a href="#stop-container" class="headerlink" title="stop container"></a>stop container</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker stop &lt;ocntainer_ID&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="some-useful-cmd"><a href="#some-useful-cmd" class="headerlink" title="some useful cmd"></a>some useful cmd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker container ls -a // list all container, include stopped</span><br><span class="line">sudo docker start &lt;container_name&gt; start a stopped container</span><br></pre></td></tr></table></figure>
+<h2 id="docker-cp"><a href="#docker-cp" class="headerlink" title="docker cp"></a>docker cp</h2><p>docker cp mycontainer：/opt/testnew/file.txt /opt/test/<br>docker cp /opt/test/file.txt mycontainer：/opt/testnew/</p>
+<p>sudo docker cp /home/liuli/backup/dump/* cn-prod:/dump</p>
+<p>sudo docker cp 2a1296fae066:/data/db /home/ubuntu/mongo-backup/04-23-2018-empty<br>sudo docker cp /home/ubuntu/mongo-backup/12-21-2017/* 2a1296fae066:/data/db</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/06/05/docker/how-to-build-nodejs-app/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -504,6 +637,268 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/javascript_html_css/bootbox.confirm_bootbox.dialog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/01/javascript_html_css/bootbox.confirm_bootbox.dialog/" itemprop="url">bootbox</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var confirmBox = function() &#123;</span><br><span class="line">    bootbox.confirm(&#123;</span><br><span class="line">        buttons: &#123;</span><br><span class="line">            confirm: &#123;</span><br><span class="line">                label: &apos;确认按钮&apos;,</span><br><span class="line">                className: &apos;btn-sm btn-primary&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            cancel: &#123;</span><br><span class="line">                label: &apos;取消按钮&apos;,</span><br><span class="line">                className: &apos;btn-sm btn-default&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        message: &apos;提示信息&apos;,</span><br><span class="line">        callback: function(result) &#123;</span><br><span class="line">            if (result) &#123;</span><br><span class="line">                console.log(&apos;点击确认按钮了&apos;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                //return false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        //title: &quot;bootbox confirm也可以添加标题哦&quot;,  </span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">bootbox.dialog(&#123;</span><br><span class="line">    title : &quot;修改密码&quot;,</span><br><span class="line">    message : &quot;&lt;div class=&apos;well &apos; style=&apos;margin-top:25px;&apos;&gt;&lt;form class=&apos;form-horizontal&apos; role=&apos;form&apos;&gt;&lt;div class=&apos;form-group&apos;&gt;&lt;label class=&apos;col-sm-3 control-label no-padding-right&apos; for=&apos;txtOldPwd&apos;&gt;旧密码&lt;/label&gt;&lt;div class=&apos;col-sm-9&apos;&gt;&lt;input type=&apos;text&apos; id=&apos;txtOldPwd&apos; placeholder=&apos;请输入旧密码&apos; class=&apos;col-xs-10 col-sm-5&apos; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&apos;space-4&apos;&gt;&lt;/div&gt;&lt;div class=&apos;form-group&apos;&gt;&lt;label class=&apos;col-sm-3 control-label no-padding-right&apos; for=&apos;txtNewPwd1&apos;&gt;新密码&lt;/label&gt;&lt;div class=&apos;col-sm-9&apos;&gt;&lt;input type=&apos;text&apos; id=&apos;txtNewPwd1&apos; placeholder=&apos;请输入新密码&apos; class=&apos;col-xs-10 col-sm-5&apos; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&apos;space-4&apos;&gt;&lt;/div&gt;&lt;div class=&apos;form-group&apos;&gt;&lt;label class=&apos;col-sm-3 control-label no-padding-right&apos; for=&apos;txtNewPwd2&apos;&gt;确认新密码&lt;/label&gt;&lt;div class=&apos;col-sm-9&apos;&gt;&lt;input type=&apos;text&apos; id=&apos;txtNewPwd2&apos; placeholder=&apos;再次输入新密码&apos; class=&apos;col-xs-10 col-sm-5&apos; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/form&gt;&lt;/div&gt;&quot;,</span><br><span class="line">    buttons : &#123;</span><br><span class="line">        &quot;success&quot; : &#123;</span><br><span class="line">            &quot;label&quot; : &quot;&lt;i class=&apos;icon-ok&apos;&gt;&lt;/i&gt; 保存&quot;,</span><br><span class="line">            &quot;className&quot; : &quot;btn-sm btn-success&quot;,</span><br><span class="line">            &quot;callback&quot; : function() &#123;</span><br><span class="line">                var txt1 = $(&quot;#txtOldPwd&quot;).val();</span><br><span class="line">                var txt2 = $(&quot;#txtNewPwd1&quot;).val();</span><br><span class="line">                var txt3 = $(&quot;#txtNewPwd2&quot;).val();</span><br><span class="line"> </span><br><span class="line">                if(txt1 == &quot;&quot; || txt2 == &quot;&quot; || txt3 == &quot;&quot;)&#123;</span><br><span class="line">                    bootbox.alert(&quot;密码不能为空&quot;);</span><br><span class="line">                    return false;</span><br><span class="line">                &#125;</span><br><span class="line">                if(txt2 != txt3 )&#123;</span><br><span class="line">                    bootbox.alert(&quot;两次输入新密码不一致，请重新输入!&quot;);</span><br><span class="line">                    return false;</span><br><span class="line">                &#125;</span><br><span class="line">                var info = &#123;&quot;opt&quot;:&quot;changepassword&quot;,&quot;oldpwd&quot;:txt1,&quot;newpwd1&quot;:txt2,&quot;newpwd2&quot;:txt3&#125;;</span><br><span class="line">                //$.post(&quot;../CommonServlet&quot;,info,function(data)&#123;</span><br><span class="line">                    bootbox.alert(&quot;密码更新成功&quot;);</span><br><span class="line">                //&#125;,&apos;json&apos;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;cancel&quot; : &#123;</span><br><span class="line">            &quot;label&quot; : &quot;&lt;i class=&apos;icon-info&apos;&gt;&lt;/i&gt; 取消&quot;,</span><br><span class="line">            &quot;className&quot; : &quot;btn-sm btn-danger&quot;,</span><br><span class="line">            &quot;callback&quot; : function() &#123; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/mongo-游标/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/01/mongo-游标/" itemprop="url">mongo 中级 游标</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="mongodb-游标"><a href="#mongodb-游标" class="headerlink" title="mongodb 游标"></a>mongodb 游标</h2><p>在查询mongodb时， 有时需要 遍历 <strong>整个</strong> collection或者 批处理<strong>大量</strong>的数据，用普通的find()会消耗大量内存且不便于操作</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.find(query, projection);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>document</td>
+<td>可选. 使用查询操作符指定查询条件</td>
+</tr>
+<tr>
+<td>projection</td>
+<td>document</td>
+<td>指定使用投影运算符返回的字段省略此参数返回匹配文档中的所有字段</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">async function readDataFromDB(db, col, query, projection) &#123;</span><br><span class="line">  let resultArr = [];</span><br><span class="line"></span><br><span class="line">  const cursor = db.collection(col).find(query, projection);</span><br><span class="line">  for (let doc = await cursor.next(); doc != null; doc = await cursor.next())&#123;</span><br><span class="line">    resultArr.push(doc);</span><br><span class="line">  &#125;</span><br><span class="line">  return await Promise.all(resultArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/nodejs-fs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -581,6 +976,125 @@
 <h2 id="创建文件，删除文件"><a href="#创建文件，删除文件" class="headerlink" title="创建文件，删除文件"></a>创建文件，删除文件</h2><p>const buffer = Buffer.alloc(1024 * 1024);<br>fs.writeFileSync(‘file_1M’, buffer);<br>fs.unlinkSync(‘file_1M’)</p>
 <h3 id="只读日志文件"><a href="#只读日志文件" class="headerlink" title="只读日志文件"></a>只读日志文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const accessLogfile = fs.createWriteStream(&apos;./access.log&apos;, &#123; flags: &apos;a&apos; &#125;); //访问日志</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const test = () =&gt; &#123;</span><br><span class="line">	for (let i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">		var now = new Date();</span><br><span class="line">		var time = now.getFullYear() + &apos;-&apos; + now.getMonth() + &apos;-&apos; + now.getDate() + &apos; &apos;</span><br><span class="line">			+ now.getHours() + &apos;:&apos; + now.getMinutes() + &apos;:&apos; + now.getSeconds();</span><br><span class="line">		accessLogfile.write(time + &apos;\r\n\r\n\r\n&apos;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	console.log(&apos;ccc&apos;);</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">module.exports = test;</span><br></pre></td></tr></table></figure>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/变量提升/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/01/nodejs/变量提升/" itemprop="url">javascript 变量提升</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	function test_1() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_1();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_1&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_2() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		function print(string) &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_2();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_2&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_3() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	test_3();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_3&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_4() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	test_4();</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_4&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_5() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	setTimeout(() =&gt; &#123;</span><br><span class="line">		test_5()</span><br><span class="line">	&#125;, 100);</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_5&apos;, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -875,7 +1389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/mongo-游标/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/knows/stripe-alipay/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -894,7 +1408,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/01/mongo-游标/" itemprop="url">mongo 中级 游标</a></h1>
+                <a class="post-title-link" href="/2018/05/01/knows/stripe-alipay/" itemprop="url">stripe 接入支付宝</a></h1>
         
 
         <div class="post-meta">
@@ -946,520 +1460,8 @@
       
         
           
-            <h2 id="mongodb-游标"><a href="#mongodb-游标" class="headerlink" title="mongodb 游标"></a>mongodb 游标</h2><p>在查询mongodb时， 有时需要 遍历 <strong>整个</strong> collection或者 批处理<strong>大量</strong>的数据，用普通的find()会消耗大量内存且不便于操作</p>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.find(query, projection);</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>query</td>
-<td>document</td>
-<td>可选. 使用查询操作符指定查询条件</td>
-</tr>
-<tr>
-<td>projection</td>
-<td>document</td>
-<td>指定使用投影运算符返回的字段省略此参数返回匹配文档中的所有字段</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">async function readDataFromDB(db, col, query, projection) &#123;</span><br><span class="line">  let resultArr = [];</span><br><span class="line"></span><br><span class="line">  const cursor = db.collection(col).find(query, projection);</span><br><span class="line">  for (let doc = await cursor.next(); doc != null; doc = await cursor.next())&#123;</span><br><span class="line">    resultArr.push(doc);</span><br><span class="line">  &#125;</span><br><span class="line">  return await Promise.all(resultArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Note left of alipay : ...</span><br><span class="line">frontend -&gt; backend : request source</span><br><span class="line">backend -&gt; billing : request</span><br><span class="line">billing -&gt; stripe : request</span><br><span class="line">stripe --&gt; frontend : sourceObj</span><br><span class="line">Note left of frontend : frontend user authentication</span><br><span class="line">frontend -&gt; alipay : open alipay QR code page</span><br><span class="line">Note right of alipay : PAY STRIPE the money</span><br><span class="line">alipay -&gt; stripe : money</span><br><span class="line">alipay -&gt; frontend : redirect to redirect.[return_url]</span><br><span class="line">frontend -&gt; backend : request charge</span><br><span class="line">backend -&gt; billing : request</span><br><span class="line">billing -&gt; stripe : request</span><br><span class="line">stripe --&gt; backend : charge finished</span><br><span class="line">Note right of stripe : money to MODLEO</span><br><span class="line">Note left of backend : create company</span><br><span class="line">backend -&gt; frontend : finished</span><br><span class="line">Note left of frontend : redirect to plan page</span><br></pre></td></tr></table></figure>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/变量提升/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/nodejs/变量提升/" itemprop="url">javascript 变量提升</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">	function test_1() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_1();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_1&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_2() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">		function print(string) &#123; console.log(string); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	test_2();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_2&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_3() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">	test_3();</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_3&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_4() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	test_4();</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_4&apos;, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">	function test_5() &#123;</span><br><span class="line">		print(&apos;hello&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">	setTimeout(() =&gt; &#123;</span><br><span class="line">		test_5()</span><br><span class="line">	&#125;, 100);</span><br><span class="line">	const print = (string) =&gt; &#123; console.log(string); &#125;</span><br><span class="line">&#125; catch (error) &#123;</span><br><span class="line">	console.log(&apos;test_5&apos;, error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/nodejs/sleep/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/nodejs/sleep/" itemprop="url">nodejs sleep</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>const tag = ‘[sleep.js]’;</p>
-<p>const sleepFn = async (ms) =&gt; {<br>    await new Promise(resolve =&gt; {<br>        setTimeout(() =&gt; { }, ms)<br>    })<br>}</p>
-<p>const sleep = async () =&gt; {<br>    await new Promise(resolve =&gt; {<br>        setTimeout(() =&gt; { resolve()}, 2000)<br>    })<br>}</p>
-<p>module.exports = {<br>    sleepFn,<br>    sleep<br>}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/javascript_html_css/long-text-css/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/javascript_html_css/long-text-css/" itemprop="url">css隐藏多余文本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    white-space: nowrap; //不换行</span><br><span class="line">    width: 200px;//宽度</span><br><span class="line">    overflow: hidden;//多余的隐藏</span><br><span class="line">    text-overflow: ellipsis;//多余的显示成点点点</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/05/01/linux/linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/01/linux/linux/" itemprop="url">linux下常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T17:21:51+08:00">
-                2018-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="linux-查看命令所在目录"><a href="#linux-查看命令所在目录" class="headerlink" title="linux 查看命令所在目录"></a>linux 查看命令所在目录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whereis git</span><br><span class="line">which git</span><br></pre></td></tr></table></figure>
-<h1 id="linux-查看文件信息"><a href="#linux-查看文件信息" class="headerlink" title="linux 查看文件信息"></a>linux 查看文件信息</h1><p>推荐三种方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ll /usr/bin/git</span><br><span class="line">ls -l /usr/bin/git</span><br><span class="line">ls -lh /usr/bin/git</span><br></pre></td></tr></table></figure></p>
-<h1 id="更改文件（夹）权限"><a href="#更改文件（夹）权限" class="headerlink" title="更改文件（夹）权限"></a>更改文件（夹）权限</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 filepath</span><br></pre></td></tr></table></figure>
-<h1 id="安装vscode-deb"><a href="#安装vscode-deb" class="headerlink" title="安装vscode.deb"></a>安装vscode.deb</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// ref https://code.visualstudio.com/docs/setup/linux</span><br><span class="line">sudo dpkg -i &lt;file&gt;.deb</span><br><span class="line">sudo apt-get install -f # Install dependencies</span><br></pre></td></tr></table></figure>
-<h1 id="node-tar-gz"><a href="#node-tar-gz" class="headerlink" title="node (tar.gz)"></a>node (tar.gz)</h1><p>$ wget <a href="https://nodejs.org/dist/v8.9.3/node-v8.9.3.tar.gz" target="_blank" rel="noopener">https://nodejs.org/dist/v8.9.3/node-v8.9.3.tar.gz</a><br>$ tar zxvf node-v8.9.3.tar.gz<br><!-- sudo apt-get install gcc g++ --><br>$ ./configure<br>$ sudo make &amp;&amp; sudo make install</p>
-<h1 id="node-tar-xz"><a href="#node-tar-xz" class="headerlink" title="node(tar.xz)"></a>node(tar.xz)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://nodejs.org/dist/v8.9.3/node-v8.9.3-linux-x64.tar.xz</span><br><span class="line">$ xz -d node-v8.9.3-linux-x64.tar.xz</span><br><span class="line">$ tar xvf node-v8.9.3-linux-x64.tar</span><br><span class="line"></span><br><span class="line">$ vi ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>add below to you env<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NODE_HOME=/home/ubuntu/node-v8.9.3-linux-x64</span><br><span class="line">export PATH=$NODE_HOME/bin:$PATH</span><br></pre></td></tr></table></figure></p>
-<h1 id="linux-查看自己是否被-ping"><a href="#linux-查看自己是否被-ping" class="headerlink" title="linux 查看自己是否被 ping"></a>linux 查看自己是否被 ping</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># view ip</span><br><span class="line">ifconfig -a</span><br><span class="line"># listen ping via opening tcp listener</span><br><span class="line">sudo tcpdump</span><br></pre></td></tr></table></figure>
-<h1 id="ssh-登录到-vm"><a href="#ssh-登录到-vm" class="headerlink" title="ssh 登录到 vm"></a>ssh 登录到 vm</h1><p>sudo apt-get install openssh-server<br>ssh <name>@<ip></ip></name></p>
-<h1 id="how-to-install-docker-in-ubuntu"><a href="#how-to-install-docker-in-ubuntu" class="headerlink" title="how to install docker in ubuntu"></a>how to install docker in ubuntu</h1><p><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/</a></p>
-<h1 id="tar-gz-amp-tar-bz2"><a href="#tar-gz-amp-tar-bz2" class="headerlink" title="tar.gz &amp; tar.bz2"></a>tar.gz &amp; tar.bz2</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#.tar.gz            </span><br><span class="line">tar   -zxvf   xx.tar.gz</span><br><span class="line">#.tar.bz2           </span><br><span class="line">tar   -jxvf    xx.tar.bz2</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1544,7 +1546,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1557,7 +1559,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1599,7 +1601,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

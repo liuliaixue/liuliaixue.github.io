@@ -261,6 +261,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/03/25/javascript_html_css/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/25/javascript_html_css/ajax/" itemprop="url">ajax request</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T11:09:29+08:00">
+                2018-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function loadXMLDoc() &#123;</span><br><span class="line">        var xmlhttp;</span><br><span class="line">        if (window.XMLHttpRequest) &#123; // code for IE7+, Firefox, Chrome, Opera, Safari</span><br><span class="line">            xmlhttp = new XMLHttpRequest();</span><br><span class="line">        &#125; else &#123; // code for IE6, IE5</span><br><span class="line">            xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        xmlhttp.onreadystatechange = function () &#123;</span><br><span class="line">            if (xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200) &#123;</span><br><span class="line">                document.getElementById(&quot;myDiv&quot;).innerHTML = xmlhttp.responseText;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        xmlhttp.open(&quot;GET&quot;, &quot;/ajax/demo_get.asp&quot;, true);</span><br><span class="line">        xmlhttp.send();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    var url = &quot;https://www.alal.io/files/assets/token&quot;;</span><br><span class="line">    xmlhttp = new XMLHttpRequest();</span><br><span class="line">    xmlhttp.onreadystatechange = state_Change;</span><br><span class="line">    xmlhttp.open(&quot;POST&quot;, url, true);</span><br><span class="line">    xmlhttp.setRequestHeader(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;);</span><br><span class="line">    var params = &#123; &quot;fileSize&quot;: &quot;1000&quot; &#125;;</span><br><span class="line">    xmlhttp.send(JSON.stringify(params));</span><br><span class="line">    var state_Change = function () &#123;</span><br><span class="line">        console.log(xmlhttp.readyState, xmlhttp.status)</span><br><span class="line">        console.log(xmlhttp)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/03/01/linux/ansible-vault/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -624,139 +743,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/git/git-revert/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/11/git/git-revert/" itemprop="url">git revert</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#</p>
-<p>比如当我们Git revert的时候，</p>
-<p>git revert </p>
-<p>Git会抱怨：</p>
-<p>is a merge but no -m option was given</p>
-<p>这是因为你revert的那个commit是一个merge commit，它有两个parent, Git不知道base是选哪个parent，就没法diff，所以就抱怨了，所以你要显示告诉Git用哪一个parent。</p>
-<p>git revert sidsad8 -m 1</p>
-<p>这样就选parent 1，那么parent 1又是哪一个呢？</p>
-<p>一般来说，如果你在master上mergezhc_branch,那么parent 1就是master，parent 2就是zhc_branch.</p>
-<p>Often this will be parent number one, for example if you were on master and did git merge unwanted and then decided to revert the merge of unwanted. The first parent would be your pre-merge master branch and the second parent would be the tip of unwanted.</p>
-<p>上一篇：三分钟教你学Git(十九) - 全局，用户，仓库作用域的配置文件</p>
-<p>原文:<a href="http://blog.csdn.net/hongchangfirst/article/details/49472913" target="_blank" rel="noopener">http://blog.csdn.net/hongchangfirst/article/details/49472913</a></p>
-<p>作者:hongchangfirst</p>
-<p>hongchangfirst的主页:<a href="http://blog.csdn.net/hongchangfirst" target="_blank" rel="noopener">http://blog.csdn.net/hongchangfirst</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/jsj_jicheng_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -884,7 +870,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/PowerShell/how-to-set-env-variables/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/knows/pingpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -903,7 +889,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/11/PowerShell/how-to-set-env-variables/" itemprop="url">set environment variables in powershell</a></h1>
+                <a class="post-title-link" href="/2017/09/11/knows/pingpp/" itemprop="url">ping++</a></h1>
         
 
         <div class="post-meta">
@@ -955,137 +941,15 @@
       
         
           
-            <h1 id="set-environment-variables"><a href="#set-environment-variables" class="headerlink" title="set environment variables"></a>set environment variables</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$env:NODE_ENV=&apos;cnTest&apos;;</span><br></pre></td></tr></table></figure>
-<h1 id="a-powershell-script-file-ps1"><a href="#a-powershell-script-file-ps1" class="headerlink" title="a powershell script file(.ps1)"></a>a powershell script file(.ps1)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;cnTest server&quot;;</span><br><span class="line">$env:NODE_ENV=&apos;cnTest&apos;; </span><br><span class="line">node server.js;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/regular-expression/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/11/javascript_html_css/regular-expression/" itemprop="url">正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#</p>
-<h2 id="基本匹配模式"><a href="#基本匹配模式" class="headerlink" title="基本匹配模式"></a>基本匹配模式</h2><h3 id="普通匹配方式"><a href="#普通匹配方式" class="headerlink" title="普通匹配方式"></a>普通匹配方式</h3><p>^once 以once开头的字符串<br>bucket$<br>^bucket$<br>once</p>
-<h3 id="包含转义字符的匹配方式"><a href="#包含转义字符的匹配方式" class="headerlink" title="包含转义字符的匹配方式"></a>包含转义字符的匹配方式</h3><p>^\t 制表符<br>\n<br>\r<br>\<br>.</p>
-<h2 id="字符簇-只能表示一个字符"><a href="#字符簇-只能表示一个字符" class="headerlink" title="字符簇 只能表示一个字符"></a>字符簇 只能表示一个字符</h2><p>[a-z] //匹配所有的小写字母<br>[A-Z] //匹配所有的大写字母<br>[a-zA-Z] //匹配所有的字母<br>[0-9] //匹配所有的数字<br>[0-9.-] //匹配所有的数字，句号和减号<br>[ \f\r\t\n] //匹配所有的白字符</p>
-<p>^[a-z][0-9]$ 匹配两个字符，字母+数字<br>^[^0-9][0-9]$ 匹配两个字符，非数字+数字</p>
-<p>[^a-z] //除了小写字母以外的所有字符<br>[^\\/\^] //除了()(/)(^)之外的所有字符<br>[^\”\’] //除了双引号(“)和单引号(‘)之外的所有字符</p>
-<h2 id="重复出现"><a href="#重复出现" class="headerlink" title="重复出现"></a>重复出现</h2><p>^[a-zA-Z0-9_]{1,}$ //所有包含一个以上的字母、数字或下划线的字符串<br>^[1-9]{1,}$ //所有的正数<br>^-{0,1}[0-9]{1,}$ //所有的整数<br>^[-]?[0-9]+.?[0-9]+$ //所有的浮点数</p>
-<h2 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h2><h3 id="手机号"><a href="#手机号" class="headerlink" title="手机号"></a>手机号</h3><p>^[1][358][0-9]{9}$</p>
-<h3 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h3><p> /^([a-zA-Z0-9_.-])+\@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/</p>
-<h3 id="车牌号"><a href="#车牌号" class="headerlink" title="车牌号"></a>车牌号</h3><p> var re=/^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;</p>
-<h3 id="匹配特定数字："><a href="#匹配特定数字：" class="headerlink" title="匹配特定数字："></a>匹配特定数字：</h3><p>　　^[1-9]d<em>$　 　 //匹配正整数<br>　　^-[1-9]d</em>$ 　 //匹配负整数<br>　　^-?[1-9]d<em>$　　 //匹配整数<br>　　^[1-9]d</em>|0$　 //匹配非负整数（正整数 + 0）<br>　　^-[1-9]d<em>|0$　　 //匹配非正整数（负整数 + 0）<br>　　^[1-9]d</em>.d<em>|0.d</em>[1-9]d<em>$　　 //匹配正浮点数<br>　　^-([1-9]d</em>.d<em>|0.d</em>[1-9]d<em>)$　 //匹配负浮点数<br>　　^-?([1-9]d</em>.d<em>|0.d</em>[1-9]d<em>|0?.0+|0)$　 //匹配浮点数<br>　　^[1-9]d</em>.d<em>|0.d</em>[1-9]d<em>|0?.0+|0$　　 //匹配非负浮点数（正浮点数 + 0）<br>　　^(-([1-9]d</em>.d<em>|0.d</em>[1-9]d*))|0?.0+|0$　　//匹配非正浮点数（负浮点数 + 0）<br>　　评注：处理大量数据时有用，具体应用时注意修正 </p>
+            <h1 id="ping-pc端支付宝支付流程"><a href="#ping-pc端支付宝支付流程" class="headerlink" title="ping++ pc端支付宝支付流程"></a>ping++ pc端支付宝支付流程</h1><p>Ping++ 是为移动端应用以及 PC 网页量身打造的下一代支付系统，通过一个 SDK 便可以同时支持移动端以及 PC 端网页的多种主流支付渠道。Ping++ SDK 包括 Client SDK 和 Server SDK 两部分，支持主流的七种后端开发语言，适配了 Android，iOS 和 HTML5 三种移动端平台以及 PC 端网页。使用 SDK 发起交易的基本流程参见 SDK 交易流程 <a href="https://www.pingxx.com/guidance/products/sdk" target="_blank" rel="noopener">https://www.pingxx.com/guidance/products/sdk</a></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>SDK接入,在<a href="https://github.com/PingPlusPlus/pingpp-html5/tree/master/src" target="_blank" rel="noopener">https://github.com/PingPlusPlus/pingpp-html5/tree/master/src</a><br> 下载pingpp-pc.js,并在页面中引入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;/path/to/pingpp-pc.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="获取支付凭证”charge”"><a href="#获取支付凭证”charge”" class="headerlink" title="获取支付凭证”charge”"></a>获取支付凭证”charge”</h2><p>创建”charge”对象，可以参考官方文档 <a href="https://www.pingxx.com/document/api#api-c-new" target="_blank" rel="noopener">https://www.pingxx.com/document/api#api-c-new</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//向服务器发送请求获取订单的支付凭证，参数为[订单编号 ,支付完成后返回的地址,支付方式名称]</span><br><span class="line">$.jsonrpc(&quot;chuanghe.requestPay&quot;, [orderNumber,url,channel], function(e1, r1) &#123;</span><br><span class="line">    if(r1)&#123;</span><br><span class="line">        //在返回的数据中取出&quot;charge&quot;,如r1.charge</span><br><span class="line">        //发送支付请求</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="发送支付请求"><a href="#发送支付请求" class="headerlink" title="发送支付请求"></a>发送支付请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pingppPc.createPayment(charge, function(result, err)&#123;</span><br><span class="line">// 处理错误信息</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//b2b-store 一个支付流程的代码</span><br><span class="line">$.jsonrpc(&quot;chuanghe.requestPay&quot;, [this.order.orderNumber,&quot;http://1jia2supply.coolcto.com/#!/activity/main/store-order-edit?id=&quot;+this.id,&quot;alipay_pc_direct&quot;], function(e1, r1) &#123;</span><br><span class="line">    if (r1) &#123;</span><br><span class="line">        console.log(r1.depositTicket);</span><br><span class="line">        pingppPc.createPayment(r1.depositTicket, function(result, err) &#123;</span><br><span class="line">        console.log(result);</span><br><span class="line">        console.log(err);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">return;</span><br></pre></td></tr></table></figure>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>“invalid_charge_no_such_channel”   没有这种支付方式</p>
+<p>检查”channel”是否是”alipay_pc_direct”，检查pingpp-pc.js是pc端使用的SDK，查看代码中的对象 “channel”是否含有”alipay_pc_direct”。<br>SDK的脚本有两个文件，一个是手机端一个是pc端，官方API文档默认是指引到手机端的SDK，下载正确的文件就可以了</p>
+<h3 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h3><p>成功后会跳转到支付宝的支付页面，在页面上可以看到支付信息</p>
 
           
         
@@ -1256,6 +1120,258 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/js继承_/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/11/javascript_html_css/js继承_/" itemprop="url">js继承</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function test(str) &#123;</span><br><span class="line">   alert(this.name + &quot; &quot; + str);</span><br><span class="line">&#125;</span><br><span class="line">var object = &#123;name:&quot;zhangsan&quot;&#125;</span><br><span class="line">test.call(object, &quot;langsin&quot;); </span><br><span class="line">//此时，第一个参数值object传递给了test类(即方法)中出现的this，而第二个参数&quot;langsin&quot;则赋值给了test类(即方法)的str</span><br><span class="line"></span><br><span class="line">function Parent(username) &#123;</span><br><span class="line">   this.username = username;</span><br><span class="line">   this.hello = function() &#123;</span><br><span class="line">       alert(this.username);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">   Parent.call(this, username);</span><br><span class="line"></span><br><span class="line">   this.password = password;</span><br><span class="line">   this.world = function() &#123;</span><br><span class="line">       alert(this.password);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/git/git-revert/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/11/git/git-revert/" itemprop="url">git revert</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#</p>
+<p>比如当我们Git revert的时候，</p>
+<p>git revert </p>
+<p>Git会抱怨：</p>
+<p>is a merge but no -m option was given</p>
+<p>这是因为你revert的那个commit是一个merge commit，它有两个parent, Git不知道base是选哪个parent，就没法diff，所以就抱怨了，所以你要显示告诉Git用哪一个parent。</p>
+<p>git revert sidsad8 -m 1</p>
+<p>这样就选parent 1，那么parent 1又是哪一个呢？</p>
+<p>一般来说，如果你在master上mergezhc_branch,那么parent 1就是master，parent 2就是zhc_branch.</p>
+<p>Often this will be parent number one, for example if you were on master and did git merge unwanted and then decided to revert the merge of unwanted. The first parent would be your pre-merge master branch and the second parent would be the tip of unwanted.</p>
+<p>上一篇：三分钟教你学Git(十九) - 全局，用户，仓库作用域的配置文件</p>
+<p>原文:<a href="http://blog.csdn.net/hongchangfirst/article/details/49472913" target="_blank" rel="noopener">http://blog.csdn.net/hongchangfirst/article/details/49472913</a></p>
+<p>作者:hongchangfirst</p>
+<p>hongchangfirst的主页:<a href="http://blog.csdn.net/hongchangfirst" target="_blank" rel="noopener">http://blog.csdn.net/hongchangfirst</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/git/git-rebase/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1366,125 +1482,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/git/git-merge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/11/git/git-merge/" itemprop="url">git merge</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="normal-merge"><a href="#normal-merge" class="headerlink" title="normal merge"></a>normal merge</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b f1</span><br><span class="line">git commit -m &apos;some commits&apos;</span><br><span class="line">git git checkout master</span><br><span class="line">// git merge f1</span><br><span class="line">git merge --no-ff //recommend</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1535,7 +1532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1548,7 +1545,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1590,7 +1587,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -335,8 +335,8 @@
             <h3 id="基本原理原理"><a href="#基本原理原理" class="headerlink" title="基本原理原理"></a>基本原理原理</h3><h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>加密和解密用的同一套算法,比如</p>
 <p>原文 “abc”, 加密 “所有字母序号+1”</p>
 <p>密文 “bcd”, 解密 “所有字母序号-1”</p>
-<h4 id="非对称个加密"><a href="#非对称个加密" class="headerlink" title="非对称个加密"></a>非对称个加密</h4><p>基于大数的分解困难,加密解密用不同的文件<br>原文 “abc”, 加密 “私钥”</p>
-<p>密文 “bcd”, 解密 “公钥”</p>
+<h4 id="非对称个加密"><a href="#非对称个加密" class="headerlink" title="非对称个加密"></a>非对称个加密</h4><p>基于大数的分解困难,加密解密用不同的文件<br>原文 “abc…”, 加密 “私钥”</p>
+<p>密文 “…bcd”, 解密 “公钥”</p>
 <h3 id="加密传输"><a href="#加密传输" class="headerlink" title="加密传输"></a>加密传输</h3><p>A 保有<code>私钥</code>,将<code>公钥</code>发给 B</p>
 <p>A:<code>原文</code>加密成<code>密文</code>, 取原文的<code>hash</code><br>发出的消息为<code>密文</code> + <code>hash</code></p>
 <p>B:将密文解密成<code>原文1</code>, 取<code>原文1</code>的<code>hash1</code><br>如果<code>hash</code>===<code>hash1</code>,则<code>原文</code>是从 A 发出的,并且<code>原文</code> === <code>原文1</code>没有被更改过</p>

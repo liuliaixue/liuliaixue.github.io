@@ -871,6 +871,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/jsj_jicheng_2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/11/javascript_html_css/jsj_jicheng_2/" itemprop="url">js继承</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-对象冒充"><a href="#1-对象冒充" class="headerlink" title="1 对象冒充"></a>1 对象冒充</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function Parent(username) &#123;</span><br><span class="line">    this.name = username;</span><br><span class="line">    this.hello = function () &#123;</span><br><span class="line">        alert(this.username);   </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">    //通过以下3行实现将Parent的属性和方法追加到Child中，从而实现继承</span><br><span class="line">    //第一步：this.method是作为一个临时的属性，并且指向Parent所指向的对象，</span><br><span class="line">    //第二步：执行this.method方法，即执行Parent所指向的对象函数</span><br><span class="line">    //第三步：销毁this.method属性，即此时Child就已经拥有了Parent的所有属性和方法</span><br><span class="line">    this.method = Parent;</span><br><span class="line">    this.method(username);//最关键的一行</span><br><span class="line">    delete this.method;</span><br><span class="line"></span><br><span class="line">    this.password = password;</span><br><span class="line">    this.world = function () &#123;</span><br><span class="line">        alert(this.password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line"></span><br><span class="line">//Child中没有声明hello()</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure>
+<h2 id="2-继承第二种方式：call-方法方式"><a href="#2-继承第二种方式：call-方法方式" class="headerlink" title="2 继承第二种方式：call()方法方式"></a>2 继承第二种方式：call()方法方式</h2><p>  call方法是Function类中的方法<br>  call方法的第一个参数的值赋值给类(即方法)中出现的this<br>  call方法的第二个参数开始依次赋值给类(即方法)所接受的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function test(str) &#123;</span><br><span class="line">   alert(this.name + &quot; &quot; + str);</span><br><span class="line">&#125;</span><br><span class="line">var object = new Object();</span><br><span class="line">object.name = &quot;zhangsan&quot;;</span><br><span class="line">test.call(object, &quot;langsin&quot;); </span><br><span class="line"></span><br><span class="line">//此时，第一个参数值object传递给了test类(即方法)中出现的this，而第二个参数&quot;langsin&quot;则赋值给了test类(即方法)的str</span><br><span class="line"></span><br><span class="line">function Parent(username) &#123;</span><br><span class="line">   this.username = username;</span><br><span class="line">   this.hello = function() &#123;</span><br><span class="line">       alert(this.username);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">   Parent.call(this, username);</span><br><span class="line"></span><br><span class="line">   this.password = password;</span><br><span class="line">   this.world = function() &#123;</span><br><span class="line">       alert(this.password);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var animals = [</span><br><span class="line">  &#123; species: &apos;Lion&apos;, name: &apos;King&apos; &#125;,</span><br><span class="line">  &#123; species: &apos;Whale&apos;, name: &apos;Fail&apos; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">for (var i = 0; i &lt; animals.length; i++) &#123;</span><br><span class="line">  (function(i) &#123;</span><br><span class="line">    this.print = function() &#123;</span><br><span class="line">      console.log(&apos;#&apos; + i + &apos; &apos; + this.species</span><br><span class="line">                  + &apos;: &apos; + this.name);</span><br><span class="line">    &#125;</span><br><span class="line">    this.print();</span><br><span class="line">  &#125;).call(animals[i], i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="继承的第三种方式：apply-方法方式"><a href="#继承的第三种方式：apply-方法方式" class="headerlink" title="继承的第三种方式：apply()方法方式"></a>继承的第三种方式：apply()方法方式</h2><p>apply方法接受2个参数，<br>    A、第一个参数与call方法的第一个参数一样，即赋值给类(即方法)中出现的this<br>    B、第二个参数为数组类型，这个数组中的每个元素依次赋值给类(即方法)所接受的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function Parent(username) &#123;</span><br><span class="line">  this.username += username;</span><br><span class="line">  this.hello = function() &#123;</span><br><span class="line">      alert(this.username);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">  Parent.apply(this, new Array(username,username,username));</span><br><span class="line"></span><br><span class="line">  this.password = password;</span><br><span class="line">  this.world = function() &#123;</span><br><span class="line">      alert(this.password);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure></p>
+<p>与call()方法类似，第二个参数为数组，可以直接使用arguments</p>
+<h2 id="继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承"><a href="#继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承" class="headerlink" title="继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承"></a>继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">Person.prototype.hello = &quot;hello&quot;;</span><br><span class="line">Person.prototype.sayHello = function() &#123;</span><br><span class="line">    alert(this.hello);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child() &#123;&#125;</span><br><span class="line">Child.prototype = new Person(); //这行的作用是：将Parent中将所有通过prototype追加的属性和方法都追加到Child，从而实现了继承</span><br><span class="line">Child.prototype.world = &quot;world&quot;;</span><br><span class="line">Child.prototype.sayWorld = function() &#123;</span><br><span class="line">    alert(this.world);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c = new Child();</span><br><span class="line">c.sayHello();</span><br><span class="line">c.sayWorld();</span><br></pre></td></tr></table></figure>
+<h2 id="继承的第五种方式：-混合方式混合了call方式、-原型链方式"><a href="#继承的第五种方式：-混合方式混合了call方式、-原型链方式" class="headerlink" title="继承的第五种方式： 混合方式混合了call方式、 原型链方式"></a>继承的第五种方式： 混合方式混合了call方式、 原型链方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Parent(hello) &#123;</span><br><span class="line">    this.hello = hello;</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.sayHello = function() &#123;</span><br><span class="line">    alert(this.hello);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(hello, world) &#123;</span><br><span class="line">    Parent.call(this, hello); //将父类的属性继承过来</span><br><span class="line">    this.world = world; //新增一些属性</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype = new Parent(); //将父类的方法继承过来</span><br><span class="line"></span><br><span class="line">Child.prototype.sayWorld = function() &#123; //新增一些方法</span><br><span class="line">    alert(this.world);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c = new Child(&quot;zhangsan&quot;, &quot;lisi&quot;);</span><br><span class="line">c.sayHello();</span><br><span class="line">c.sayWorld();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/apply_call/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -994,7 +1121,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/jsj_jicheng_2/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/angular-infector/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -1013,7 +1140,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/11/javascript_html_css/jsj_jicheng_2/" itemprop="url">js继承</a></h1>
+                <a class="post-title-link" href="/2017/09/11/javascript_html_css/angular-infector/" itemprop="url">angular infector</a></h1>
         
 
         <div class="post-meta">
@@ -1065,15 +1192,7 @@
       
         
           
-            <h2 id="1-对象冒充"><a href="#1-对象冒充" class="headerlink" title="1 对象冒充"></a>1 对象冒充</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function Parent(username) &#123;</span><br><span class="line">    this.name = username;</span><br><span class="line">    this.hello = function () &#123;</span><br><span class="line">        alert(this.username);   </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">    //通过以下3行实现将Parent的属性和方法追加到Child中，从而实现继承</span><br><span class="line">    //第一步：this.method是作为一个临时的属性，并且指向Parent所指向的对象，</span><br><span class="line">    //第二步：执行this.method方法，即执行Parent所指向的对象函数</span><br><span class="line">    //第三步：销毁this.method属性，即此时Child就已经拥有了Parent的所有属性和方法</span><br><span class="line">    this.method = Parent;</span><br><span class="line">    this.method(username);//最关键的一行</span><br><span class="line">    delete this.method;</span><br><span class="line"></span><br><span class="line">    this.password = password;</span><br><span class="line">    this.world = function () &#123;</span><br><span class="line">        alert(this.password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line"></span><br><span class="line">//Child中没有声明hello()</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure>
-<h2 id="2-继承第二种方式：call-方法方式"><a href="#2-继承第二种方式：call-方法方式" class="headerlink" title="2 继承第二种方式：call()方法方式"></a>2 继承第二种方式：call()方法方式</h2><p>  call方法是Function类中的方法<br>  call方法的第一个参数的值赋值给类(即方法)中出现的this<br>  call方法的第二个参数开始依次赋值给类(即方法)所接受的参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function test(str) &#123;</span><br><span class="line">   alert(this.name + &quot; &quot; + str);</span><br><span class="line">&#125;</span><br><span class="line">var object = new Object();</span><br><span class="line">object.name = &quot;zhangsan&quot;;</span><br><span class="line">test.call(object, &quot;langsin&quot;); </span><br><span class="line"></span><br><span class="line">//此时，第一个参数值object传递给了test类(即方法)中出现的this，而第二个参数&quot;langsin&quot;则赋值给了test类(即方法)的str</span><br><span class="line"></span><br><span class="line">function Parent(username) &#123;</span><br><span class="line">   this.username = username;</span><br><span class="line">   this.hello = function() &#123;</span><br><span class="line">       alert(this.username);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">   Parent.call(this, username);</span><br><span class="line"></span><br><span class="line">   this.password = password;</span><br><span class="line">   this.world = function() &#123;</span><br><span class="line">       alert(this.password);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var animals = [</span><br><span class="line">  &#123; species: &apos;Lion&apos;, name: &apos;King&apos; &#125;,</span><br><span class="line">  &#123; species: &apos;Whale&apos;, name: &apos;Fail&apos; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">for (var i = 0; i &lt; animals.length; i++) &#123;</span><br><span class="line">  (function(i) &#123;</span><br><span class="line">    this.print = function() &#123;</span><br><span class="line">      console.log(&apos;#&apos; + i + &apos; &apos; + this.species</span><br><span class="line">                  + &apos;: &apos; + this.name);</span><br><span class="line">    &#125;</span><br><span class="line">    this.print();</span><br><span class="line">  &#125;).call(animals[i], i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="继承的第三种方式：apply-方法方式"><a href="#继承的第三种方式：apply-方法方式" class="headerlink" title="继承的第三种方式：apply()方法方式"></a>继承的第三种方式：apply()方法方式</h2><p>apply方法接受2个参数，<br>    A、第一个参数与call方法的第一个参数一样，即赋值给类(即方法)中出现的this<br>    B、第二个参数为数组类型，这个数组中的每个元素依次赋值给类(即方法)所接受的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function Parent(username) &#123;</span><br><span class="line">  this.username += username;</span><br><span class="line">  this.hello = function() &#123;</span><br><span class="line">      alert(this.username);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(username, password) &#123;</span><br><span class="line">  Parent.apply(this, new Array(username,username,username));</span><br><span class="line"></span><br><span class="line">  this.password = password;</span><br><span class="line">  this.world = function() &#123;</span><br><span class="line">      alert(this.password);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var parent = new Parent(&quot;zhangsan&quot;);</span><br><span class="line">var child = new Child(&quot;lisi&quot;, &quot;123456&quot;);</span><br><span class="line">parent.hello();</span><br><span class="line">child.hello();</span><br><span class="line">child.world();</span><br></pre></td></tr></table></figure></p>
-<p>与call()方法类似，第二个参数为数组，可以直接使用arguments</p>
-<h2 id="继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承"><a href="#继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承" class="headerlink" title="继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承"></a>继承的第四种方式：原型链方式，即子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">Person.prototype.hello = &quot;hello&quot;;</span><br><span class="line">Person.prototype.sayHello = function() &#123;</span><br><span class="line">    alert(this.hello);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child() &#123;&#125;</span><br><span class="line">Child.prototype = new Person(); //这行的作用是：将Parent中将所有通过prototype追加的属性和方法都追加到Child，从而实现了继承</span><br><span class="line">Child.prototype.world = &quot;world&quot;;</span><br><span class="line">Child.prototype.sayWorld = function() &#123;</span><br><span class="line">    alert(this.world);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c = new Child();</span><br><span class="line">c.sayHello();</span><br><span class="line">c.sayWorld();</span><br></pre></td></tr></table></figure>
-<h2 id="继承的第五种方式：-混合方式混合了call方式、-原型链方式"><a href="#继承的第五种方式：-混合方式混合了call方式、-原型链方式" class="headerlink" title="继承的第五种方式： 混合方式混合了call方式、 原型链方式"></a>继承的第五种方式： 混合方式混合了call方式、 原型链方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function Parent(hello) &#123;</span><br><span class="line">    this.hello = hello;</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.sayHello = function() &#123;</span><br><span class="line">    alert(this.hello);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Child(hello, world) &#123;</span><br><span class="line">    Parent.call(this, hello); //将父类的属性继承过来</span><br><span class="line">    this.world = world; //新增一些属性</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype = new Parent(); //将父类的方法继承过来</span><br><span class="line"></span><br><span class="line">Child.prototype.sayWorld = function() &#123; //新增一些方法</span><br><span class="line">    alert(this.world);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c = new Child(&quot;zhangsan&quot;, &quot;lisi&quot;);</span><br><span class="line">c.sayHello();</span><br><span class="line">c.sayWorld();</span><br></pre></td></tr></table></figure>
-
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">var  angular = &#123;&#125;;</span><br><span class="line">angular.services = &#123;&#125;;</span><br><span class="line">angular.factory = function(serviceName,store)&#123;</span><br><span class="line">  this.services[serviceName] = store;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">angular.control = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">data = &#123;name: &apos;alan&apos;, age: 0&#125;;</span><br><span class="line">angular.factory(&quot;add&quot;,add);</span><br><span class="line"> function add ()&#123;data.age++&#125;</span><br><span class="line">angular.factory(&quot;sub&quot;,sub);</span><br><span class="line"> function sub()&#123;data.age--&#125;</span><br><span class="line">angular.factory(&quot;changeName&quot;,changeName);</span><br><span class="line"> function changeName(name)&#123;data.name = name&#125;</span><br><span class="line"></span><br><span class="line">var FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;</span><br><span class="line">angular.controller = function(infectorName, infector) &#123;</span><br><span class="line">  // console.log(infectorName);</span><br><span class="line">  // console.log(infector);</span><br><span class="line">  // console.log(infector.toString())</span><br><span class="line">  const argDecl = infector.toString().match(FN_ARGS);</span><br><span class="line">  console.log(&quot;infector:&quot; ,argDecl[1])</span><br><span class="line">  infector.apply(this,[0,1,2])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var infectorUser = function(add, sub, changeName) &#123;</span><br><span class="line">  console.log(add, sub, changeName);</span><br><span class="line">&#125;</span><br><span class="line">angular.controller(&quot;infectorUser&quot;,infectorUser);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // let services = arguments;</span><br><span class="line">  // let arg = [];</span><br><span class="line">  // services.forEach(function(service)&#123;</span><br><span class="line">  //   for(name of services) &#123;</span><br><span class="line">  //     if(services[name] === service)&#123;</span><br><span class="line">  //       arg.push(services[name]);</span><br><span class="line">  //       return false;</span><br><span class="line">  //     &#125;</span><br><span class="line">  //   &#125;</span><br><span class="line">  //   throw service + &quot; not definded&quot;</span><br><span class="line">  // &#125;);</span><br><span class="line">  // return infector.apply(this,arg)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1329,125 +1448,6 @@
 <p>作者:hongchangfirst</p>
 <p>hongchangfirst的主页:<a href="http://blog.csdn.net/hongchangfirst" target="_blank" rel="noopener">http://blog.csdn.net/hongchangfirst</a></p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/angular-infector/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/11/javascript_html_css/angular-infector/" itemprop="url">angular infector</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">var  angular = &#123;&#125;;</span><br><span class="line">angular.services = &#123;&#125;;</span><br><span class="line">angular.factory = function(serviceName,store)&#123;</span><br><span class="line">  this.services[serviceName] = store;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">angular.control = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">data = &#123;name: &apos;alan&apos;, age: 0&#125;;</span><br><span class="line">angular.factory(&quot;add&quot;,add);</span><br><span class="line"> function add ()&#123;data.age++&#125;</span><br><span class="line">angular.factory(&quot;sub&quot;,sub);</span><br><span class="line"> function sub()&#123;data.age--&#125;</span><br><span class="line">angular.factory(&quot;changeName&quot;,changeName);</span><br><span class="line"> function changeName(name)&#123;data.name = name&#125;</span><br><span class="line"></span><br><span class="line">var FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;</span><br><span class="line">angular.controller = function(infectorName, infector) &#123;</span><br><span class="line">  // console.log(infectorName);</span><br><span class="line">  // console.log(infector);</span><br><span class="line">  // console.log(infector.toString())</span><br><span class="line">  const argDecl = infector.toString().match(FN_ARGS);</span><br><span class="line">  console.log(&quot;infector:&quot; ,argDecl[1])</span><br><span class="line">  infector.apply(this,[0,1,2])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var infectorUser = function(add, sub, changeName) &#123;</span><br><span class="line">  console.log(add, sub, changeName);</span><br><span class="line">&#125;</span><br><span class="line">angular.controller(&quot;infectorUser&quot;,infectorUser);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // let services = arguments;</span><br><span class="line">  // let arg = [];</span><br><span class="line">  // services.forEach(function(service)&#123;</span><br><span class="line">  //   for(name of services) &#123;</span><br><span class="line">  //     if(services[name] === service)&#123;</span><br><span class="line">  //       arg.push(services[name]);</span><br><span class="line">  //       return false;</span><br><span class="line">  //     &#125;</span><br><span class="line">  //   &#125;</span><br><span class="line">  //   throw service + &quot; not definded&quot;</span><br><span class="line">  // &#125;);</span><br><span class="line">  // return infector.apply(this,arg)</span><br></pre></td></tr></table></figure>
           
         
       

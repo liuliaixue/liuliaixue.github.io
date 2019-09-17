@@ -343,7 +343,7 @@
 <h3 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h3><h4 id="在于如何将公钥发给-B"><a href="#在于如何将公钥发给-B" class="headerlink" title="在于如何将公钥发给 B?"></a>在于如何将<code>公钥</code>发给 B?</h4><p>或者说如何证明给 B 发消息的是 A?</p>
 <p>和加密传输类似,需要向一些可信任的机构申请证书</p>
 <p>CE 的私钥, A 取得 CE 的公钥, 浏览器也有 CE 的公钥</p>
-<p>A: <code>A的信息</code>中包含自己的信息,比如<code>域名,</code>将其发送给<code>CE</code><br>CE: <code>CE</code>将 <code>A的信息</code>用私钥加密,并将<code>A的信息</code>取<code>hash</code>,加载一起就成了 <code>A 的证书</code></p>
+<p>A: <code>A的信息</code>中包含自己的信息,比如<code>域名,</code>将其发送给<code>CE</code><br>CE: <code>CE</code>将 <code>A的信息</code>用私钥加密,并将<code>A的信息</code>取<code>hash</code>,加在一起就成了 <code>A 的证书</code></p>
 <p>浏览器(用户 <code>B</code>): 与 A 通信系时先取得<code>A的证书</code>,用 CE 的公钥解密验证 <code>hash</code>,即可取得<code>A的信息</code></p>
 <p>这个信息是经过<code>CE</code>认证的,浏览器预先信任了<code>CE</code>,所以也就信任了<code>A的信息</code></p>
 <p>也就证明了这个证书确实是<code>A</code>的, 浏览器确实在与 <code>A</code> 通信</p>
@@ -903,125 +903,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/07/10/nodejs/jihuo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuliaixue">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/10/nodejs/jihuo/" itemprop="url">一个游戏的二进制文件修改</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T22:04:51+08:00">
-                2018-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line"></span><br><span class="line">const filepath = &apos;./paul.dll&apos;</span><br><span class="line">const point = 0x0000BFD0;</span><br><span class="line"></span><br><span class="line">const bf = fs.readFileSync(filepath)</span><br><span class="line"></span><br><span class="line">let datas = []</span><br><span class="line"></span><br><span class="line">for (let i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">    datas.push(bf[point + i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(&apos;origin&apos;, datas)</span><br><span class="line">console.log(&apos;should&apos;, [0x55, 0x8B, 0xEC, 0xB8, 0x44, 0x27, 0x00, 0x00, 0xE8, 0x63, 0x7E, 0x0F])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const updatedDatas = [0x80, 0x35, 0x5D, 0xA0, 0xB3, 0x01, 0x20, 0x33, 0xC0, 0x40, 0xC2, 0x08]</span><br><span class="line"></span><br><span class="line">for (let i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">    bf[point + i] = updatedDatas[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let temp = []</span><br><span class="line">for (let i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">    temp.push(bf[point + i])</span><br><span class="line">&#125;</span><br><span class="line">console.log(temp)</span><br><span class="line">console.log(updatedDatas)</span><br><span class="line"></span><br><span class="line">fs.writeFileSync(&apos;dd.dll&apos;, bf, &apos;buffer&apos;)</span><br><span class="line"></span><br><span class="line">console.log(&apos;new paul.dll was created&apos;)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/07/10/nodejs/handle-error-in-promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1098,6 +979,125 @@
 <p>这错误在<code>Error in callback</code>,并且错误没有被外层catch到，导致程序退出</p>
 <p>正确的写法，handle callback中的error</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const reader = (file) =&gt; &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        let row = &apos;&apos;</span><br><span class="line">        const rs = fs.createReadStream(file, &#123; encoding: &apos;utf8&apos; &#125;);</span><br><span class="line">        rs.on(&apos;data&apos;, chunk =&gt; &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                row += chunk</span><br><span class="line">                console.log(&apos;@chunk&apos;, chunk)</span><br><span class="line">                throw new Error(&apos;Error in callback&apos;)</span><br><span class="line">            &#125; catch (e) &#123;</span><br><span class="line">                reject(e)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        rs.on(&apos;close&apos;, () =&gt; resolve(row))</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">executor = async () =&gt; &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        await reader(&apos;./test.js&apos;)</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">        console.log(&apos;Error in reader&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">executor()</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2018/07/10/nodejs/jihuo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuliaixue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/10/nodejs/jihuo/" itemprop="url">一个游戏的二进制文件修改</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T22:04:51+08:00">
+                2018-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line"></span><br><span class="line">const filepath = &apos;./paul.dll&apos;</span><br><span class="line">const point = 0x0000BFD0;</span><br><span class="line"></span><br><span class="line">const bf = fs.readFileSync(filepath)</span><br><span class="line"></span><br><span class="line">let datas = []</span><br><span class="line"></span><br><span class="line">for (let i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">    datas.push(bf[point + i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(&apos;origin&apos;, datas)</span><br><span class="line">console.log(&apos;should&apos;, [0x55, 0x8B, 0xEC, 0xB8, 0x44, 0x27, 0x00, 0x00, 0xE8, 0x63, 0x7E, 0x0F])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const updatedDatas = [0x80, 0x35, 0x5D, 0xA0, 0xB3, 0x01, 0x20, 0x33, 0xC0, 0x40, 0xC2, 0x08]</span><br><span class="line"></span><br><span class="line">for (let i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">    bf[point + i] = updatedDatas[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let temp = []</span><br><span class="line">for (let i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">    temp.push(bf[point + i])</span><br><span class="line">&#125;</span><br><span class="line">console.log(temp)</span><br><span class="line">console.log(updatedDatas)</span><br><span class="line"></span><br><span class="line">fs.writeFileSync(&apos;dd.dll&apos;, bf, &apos;buffer&apos;)</span><br><span class="line"></span><br><span class="line">console.log(&apos;new paul.dll was created&apos;)</span><br></pre></td></tr></table></figure>
           
         
       

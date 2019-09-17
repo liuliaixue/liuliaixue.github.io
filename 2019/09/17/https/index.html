@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="liuliaixue">
 <meta property="og:description" content="基本原理原理对称加密加密和解密用的同一套算法,比如 原文 “abc”, 加密 “所有字母序号+1” 密文 “bcd”, 解密 “所有字母序号-1” 非对称个加密基于大数的分解困难,加密解密用不同的文件原文 “abc…”, 加密 “私钥” 密文 “…bcd”, 解密 “公钥” 加密传输A 保有私钥,将公钥发给 B A:原文加密成密文, 取原文的hash发出的消息为密文 + hash B:将密文解密成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-17T02:35:28.660Z">
+<meta property="og:updated_time" content="2019-09-17T02:37:56.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https 原理">
 <meta name="twitter:description" content="基本原理原理对称加密加密和解密用的同一套算法,比如 原文 “abc”, 加密 “所有字母序号+1” 密文 “bcd”, 解密 “所有字母序号-1” 非对称个加密基于大数的分解困难,加密解密用不同的文件原文 “abc…”, 加密 “私钥” 密文 “…bcd”, 解密 “公钥” 加密传输A 保有私钥,将公钥发给 B A:原文加密成密文, 取原文的hash发出的消息为密文 + hash B:将密文解密成">
@@ -341,7 +341,7 @@
 <h3 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h3><h4 id="在于如何将公钥发给-B"><a href="#在于如何将公钥发给-B" class="headerlink" title="在于如何将公钥发给 B?"></a>在于如何将<code>公钥</code>发给 B?</h4><p>或者说如何证明给 B 发消息的是 A?</p>
 <p>和加密传输类似,需要向一些可信任的机构申请证书</p>
 <p>CE 的私钥, A 取得 CE 的公钥, 浏览器也有 CE 的公钥</p>
-<p>A: <code>A的信息</code>中包含自己的信息,比如<code>域名,</code>将其发送给<code>CE</code><br>CE: <code>CE</code>将 <code>A的信息</code>用私钥加密,并将<code>A的信息</code>取<code>hash</code>,加载一起就成了 <code>A 的证书</code></p>
+<p>A: <code>A的信息</code>中包含自己的信息,比如<code>域名,</code>将其发送给<code>CE</code><br>CE: <code>CE</code>将 <code>A的信息</code>用私钥加密,并将<code>A的信息</code>取<code>hash</code>,加在一起就成了 <code>A 的证书</code></p>
 <p>浏览器(用户 <code>B</code>): 与 A 通信系时先取得<code>A的证书</code>,用 CE 的公钥解密验证 <code>hash</code>,即可取得<code>A的信息</code></p>
 <p>这个信息是经过<code>CE</code>认证的,浏览器预先信任了<code>CE</code>,所以也就信任了<code>A的信息</code></p>
 <p>也就证明了这个证书确实是<code>A</code>的, 浏览器确实在与 <code>A</code> 通信</p>

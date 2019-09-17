@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="正则,regular expression," />
+  <meta name="keywords" content="https," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="# 基本匹配模式普通匹配方式^once 以once开头的字符串bucket$^bucket$once 包含转义字符的匹配方式^\t 制表符\n\r\. 字符簇 只能表示一个字符[a-z] //匹配所有的小写字母[A-Z] //匹配所有的大写字母[a-zA-Z] //匹配所有的字母[0-9] //匹配所有的数字[0-9.-] //匹配所有的数字，句号和减号[ \f\r\t\n] //匹配所有的白字符">
-<meta name="keywords" content="正则,regular expression">
+<meta name="description" content="基本原理原理对称加密加密和解密用的同一套算法,比如 原文 “abc”, 加密 “所有字母序号+1” 密文 “bcd”, 解密 “所有字母序号-1” 非对称个加密基于大数的分解困难,加密解密用不同的文件原文 “abc”, 加密 “私钥” 密文 “bcd”, 解密 “公钥” 加密传输A 保有私钥,将公钥发给 B A:原文加密成密文, 取原文的hash发出的消息为密文 + hash B:将密文解密成原文">
+<meta name="keywords" content="https">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式">
-<meta property="og:url" content="http://liuliaixue.top/2017/09/11/javascript_html_css/regular-expression/index.html">
+<meta property="og:title" content="https 原理">
+<meta property="og:url" content="http://liuliaixue.top/2019/09/17/https/index.html">
 <meta property="og:site_name" content="liuliaixue">
-<meta property="og:description" content="# 基本匹配模式普通匹配方式^once 以once开头的字符串bucket$^bucket$once 包含转义字符的匹配方式^\t 制表符\n\r\. 字符簇 只能表示一个字符[a-z] //匹配所有的小写字母[A-Z] //匹配所有的大写字母[a-zA-Z] //匹配所有的字母[0-9] //匹配所有的数字[0-9.-] //匹配所有的数字，句号和减号[ \f\r\t\n] //匹配所有的白字符">
+<meta property="og:description" content="基本原理原理对称加密加密和解密用的同一套算法,比如 原文 “abc”, 加密 “所有字母序号+1” 密文 “bcd”, 解密 “所有字母序号-1” 非对称个加密基于大数的分解困难,加密解密用不同的文件原文 “abc”, 加密 “私钥” 密文 “bcd”, 解密 “公钥” 加密传输A 保有私钥,将公钥发给 B A:原文加密成密文, 取原文的hash发出的消息为密文 + hash B:将密文解密成原文">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-26T02:26:12.379Z">
+<meta property="og:updated_time" content="2019-09-17T02:32:30.823Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="# 基本匹配模式普通匹配方式^once 以once开头的字符串bucket$^bucket$once 包含转义字符的匹配方式^\t 制表符\n\r\. 字符簇 只能表示一个字符[a-z] //匹配所有的小写字母[A-Z] //匹配所有的大写字母[a-zA-Z] //匹配所有的字母[0-9] //匹配所有的数字[0-9.-] //匹配所有的数字，句号和减号[ \f\r\t\n] //匹配所有的白字符">
+<meta name="twitter:title" content="https 原理">
+<meta name="twitter:description" content="基本原理原理对称加密加密和解密用的同一套算法,比如 原文 “abc”, 加密 “所有字母序号+1” 密文 “bcd”, 解密 “所有字母序号-1” 非对称个加密基于大数的分解困难,加密解密用不同的文件原文 “abc”, 加密 “私钥” 密文 “bcd”, 解密 “公钥” 加密传输A 保有私钥,将公钥发给 B A:原文加密成密文, 取原文的hash发出的消息为密文 + hash B:将密文解密成原文">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://liuliaixue.top/2017/09/11/javascript_html_css/regular-expression/"/>
+  <link rel="canonical" href="http://liuliaixue.top/2019/09/17/https/"/>
 
 
 
 
 
-  <title>正则表达式 | liuliaixue</title>
+  <title>https 原理 | liuliaixue</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2017/09/11/javascript_html_css/regular-expression/">
+    <link itemprop="mainEntityOfPage" href="http://liuliaixue.top/2019/09/17/https/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alan">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">正则表达式</h1>
+          <h1 class="post-title" itemprop="name headline">https 原理</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:21:51+08:00">
-                2017-09-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T00:00:00+08:00">
+                2019-09-17
               </time>
             
 
@@ -330,17 +330,21 @@
       
 
       
-        <p>#</p>
-<h2 id="基本匹配模式"><a href="#基本匹配模式" class="headerlink" title="基本匹配模式"></a>基本匹配模式</h2><h3 id="普通匹配方式"><a href="#普通匹配方式" class="headerlink" title="普通匹配方式"></a>普通匹配方式</h3><p>^once 以once开头的字符串<br>bucket$<br>^bucket$<br>once</p>
-<h3 id="包含转义字符的匹配方式"><a href="#包含转义字符的匹配方式" class="headerlink" title="包含转义字符的匹配方式"></a>包含转义字符的匹配方式</h3><p>^\t 制表符<br>\n<br>\r<br>\<br>.</p>
-<h2 id="字符簇-只能表示一个字符"><a href="#字符簇-只能表示一个字符" class="headerlink" title="字符簇 只能表示一个字符"></a>字符簇 只能表示一个字符</h2><p>[a-z] //匹配所有的小写字母<br>[A-Z] //匹配所有的大写字母<br>[a-zA-Z] //匹配所有的字母<br>[0-9] //匹配所有的数字<br>[0-9.-] //匹配所有的数字，句号和减号<br>[ \f\r\t\n] //匹配所有的白字符</p>
-<p>^[a-z][0-9]$ 匹配两个字符，字母+数字<br>^[^0-9][0-9]$ 匹配两个字符，非数字+数字</p>
-<p>[^a-z] //除了小写字母以外的所有字符<br>[^\\/\^] //除了()(/)(^)之外的所有字符<br>[^\”\’] //除了双引号(“)和单引号(‘)之外的所有字符</p>
-<h2 id="重复出现"><a href="#重复出现" class="headerlink" title="重复出现"></a>重复出现</h2><p>^[a-zA-Z0-9_]{1,}$ //所有包含一个以上的字母、数字或下划线的字符串<br>^[1-9]{1,}$ //所有的正数<br>^-{0,1}[0-9]{1,}$ //所有的整数<br>^[-]?[0-9]+.?[0-9]+$ //所有的浮点数</p>
-<h2 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h2><h3 id="手机号"><a href="#手机号" class="headerlink" title="手机号"></a>手机号</h3><p>^[1][358][0-9]{9}$</p>
-<h3 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h3><p> /^([a-zA-Z0-9_.-])+\@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/</p>
-<h3 id="车牌号"><a href="#车牌号" class="headerlink" title="车牌号"></a>车牌号</h3><p> var re=/^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;</p>
-<h3 id="匹配特定数字："><a href="#匹配特定数字：" class="headerlink" title="匹配特定数字："></a>匹配特定数字：</h3><p>　　^[1-9]d<em>$　 　 //匹配正整数<br>　　^-[1-9]d</em>$ 　 //匹配负整数<br>　　^-?[1-9]d<em>$　　 //匹配整数<br>　　^[1-9]d</em>|0$　 //匹配非负整数（正整数 + 0）<br>　　^-[1-9]d<em>|0$　　 //匹配非正整数（负整数 + 0）<br>　　^[1-9]d</em>.d<em>|0.d</em>[1-9]d<em>$　　 //匹配正浮点数<br>　　^-([1-9]d</em>.d<em>|0.d</em>[1-9]d<em>)$　 //匹配负浮点数<br>　　^-?([1-9]d</em>.d<em>|0.d</em>[1-9]d<em>|0?.0+|0)$　 //匹配浮点数<br>　　^[1-9]d</em>.d<em>|0.d</em>[1-9]d<em>|0?.0+|0$　　 //匹配非负浮点数（正浮点数 + 0）<br>　　^(-([1-9]d</em>.d<em>|0.d</em>[1-9]d*))|0?.0+|0$　　//匹配非正浮点数（负浮点数 + 0）<br>　　评注：处理大量数据时有用，具体应用时注意修正 </p>
+        <h3 id="基本原理原理"><a href="#基本原理原理" class="headerlink" title="基本原理原理"></a>基本原理原理</h3><h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>加密和解密用的同一套算法,比如</p>
+<p>原文 “abc”, 加密 “所有字母序号+1”</p>
+<p>密文 “bcd”, 解密 “所有字母序号-1”</p>
+<h4 id="非对称个加密"><a href="#非对称个加密" class="headerlink" title="非对称个加密"></a>非对称个加密</h4><p>基于大数的分解困难,加密解密用不同的文件<br>原文 “abc”, 加密 “私钥”</p>
+<p>密文 “bcd”, 解密 “公钥”</p>
+<h3 id="加密传输"><a href="#加密传输" class="headerlink" title="加密传输"></a>加密传输</h3><p>A 保有<code>私钥</code>,将<code>公钥</code>发给 B</p>
+<p>A:<code>原文</code>加密成<code>密文</code>, 取原文的<code>hash</code><br>发出的消息为<code>密文</code> + <code>hash</code></p>
+<p>B:将密文解密成<code>原文1</code>, 取<code>原文1</code>的<code>hash1</code><br>如果<code>hash</code>===<code>hash1</code>,则<code>原文</code>是从 A 发出的,并且<code>原文</code> === <code>原文1</code>没有被更改过</p>
+<h3 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h3><h4 id="在于如何将公钥发给-B"><a href="#在于如何将公钥发给-B" class="headerlink" title="在于如何将公钥发给 B?"></a>在于如何将<code>公钥</code>发给 B?</h4><p>或者说如何证明给 B 发消息的是 A?</p>
+<p>和加密传输类似,需要向一些可信任的机构申请证书</p>
+<p>CE 的私钥, A 取得 CE 的公钥, 浏览器也有 CE 的公钥</p>
+<p>A: <code>A的信息</code>中包含自己的信息,比如<code>域名,</code>将其发送给<code>CE</code><br>CE: <code>CE</code>将 <code>A的信息</code>用私钥加密,并将<code>A的信息</code>取<code>hash</code>,加载一起就成了 <code>A 的证书</code></p>
+<p>浏览器(用户 <code>B</code>): 与 A 通信系时先取得<code>A的证书</code>,用 CE 的公钥解密验证 <code>hash</code>,即可取得<code>A的信息</code></p>
+<p>这个信息是经过<code>CE</code>认证的,浏览器预先信任了<code>CE</code>,所以也就信任了<code>A的信息</code></p>
+<p>也就证明了这个证书确实是<code>A</code>的, 浏览器确实在与 <code>A</code> 通信</p>
 
       
     </div>
@@ -358,9 +362,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/正则/" rel="tag"># 正则</a>
-          
-            <a href="/tags/regular-expression/" rel="tag"># regular expression</a>
+            <a href="/tags/https/" rel="tag"># https</a>
           
         </div>
       
@@ -373,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/11/git/git-merge-squash/" rel="next" title="git merge --squash">
-                <i class="fa fa-chevron-left"></i> git merge --squash
+              <a href="/2019/09/16/linux/docker-link/" rel="next" title="创建docker镜像并连接到docker数据库">
+                <i class="fa fa-chevron-left"></i> 创建docker镜像并连接到docker数据库
               </a>
             
           </div>
@@ -382,10 +384,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/11/javascript_html_css/js继承_/" rel="prev" title="js继承">
-                js继承 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本匹配模式"><span class="nav-number">1.</span> <span class="nav-text">基本匹配模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通匹配方式"><span class="nav-number">1.1.</span> <span class="nav-text">普通匹配方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含转义字符的匹配方式"><span class="nav-number">1.2.</span> <span class="nav-text">包含转义字符的匹配方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符簇-只能表示一个字符"><span class="nav-number">2.</span> <span class="nav-text">字符簇 只能表示一个字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复出现"><span class="nav-number">3.</span> <span class="nav-text">重复出现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用示例"><span class="nav-number">4.</span> <span class="nav-text">常用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#手机号"><span class="nav-number">4.1.</span> <span class="nav-text">手机号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邮箱"><span class="nav-number">4.2.</span> <span class="nav-text">邮箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#车牌号"><span class="nav-number">4.3.</span> <span class="nav-text">车牌号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配特定数字："><span class="nav-number">4.4.</span> <span class="nav-text">匹配特定数字：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本原理原理"><span class="nav-number">1.</span> <span class="nav-text">基本原理原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对称加密"><span class="nav-number">1.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非对称个加密"><span class="nav-number">1.2.</span> <span class="nav-text">非对称个加密</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密传输"><span class="nav-number">2.</span> <span class="nav-text">加密传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证书"><span class="nav-number">3.</span> <span class="nav-text">证书</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在于如何将公钥发给-B"><span class="nav-number">3.1.</span> <span class="nav-text">在于如何将公钥发给 B?</span></a></li></ol></li></ol></div>
             
 
           </div>
